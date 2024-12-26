@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>663174540119-ll565vuge8amm6pe0atkgt9k5ldqcm0h.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.663174540119-ll565vuge8amm6pe0atkgt9k5ldqcm0h</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>663174540119-1km6o40mmtsm7ak8e75ujcb9lvknsdh8.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDMvZz1wQZcHptZYb0_BHyJhH7UOSO8dzQ</string>
+	<key>GCM_SENDER_ID</key>
+	<string>663174540119</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.bankingApp2</string>
+	<key>PROJECT_ID</key>
+	<string>banking-app-b8964</string>
+	<key>STORAGE_BUCKET</key>
+	<string>banking-app-b8964.firebasestorage.app</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:663174540119:ios:6ea38ac2046398d1906c12</string>
+</dict>
+</plist>
