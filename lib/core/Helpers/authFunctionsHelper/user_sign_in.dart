@@ -1,6 +1,6 @@
 // ignore_for_file: unused_local_variable
 import 'package:awesome_dialog/awesome_dialog.dart';
-import 'package:banking_app2/core/Helper/authFunctionsHelper/check_state.dart';
+import 'package:banking_app2/core/Helpers/authFunctionsHelper/check_state.dart';
 import 'package:banking_app2/core/common/widgets/custom_dialog.dart';
 import 'package:banking_app2/features/Home/presentation/views/home_view.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -20,7 +20,6 @@ class UserSignIn {
       bool isVerified = await CheckState.isUserSignedIn();
 
       // Only navigate if sign-in was successful.
-
       if (isVerified) {
         GoRouter.of(context).pushReplacement(HomeView.route);
       } else {
@@ -60,19 +59,15 @@ class UserSignIn {
           break;
         default:
           errorMessage = 'An unknown error occurred.';
-          print(e.code);
+        // print(e.code);
       }
 
       CustomDialog(
               context: context,
               message: errorMessage,
-              title: "Erorr",
+              title: "Something wrong happened please try again later :/ ",
               dialogType: DialogType.error)
           .customDialog();
-      print(
-          "Attempting to sign in with email: $emailAddress and password: $password");
-      print('=======> Error code: ${e.code}');
-      print('=======> Error message: ${e.message}');
     }
   }
 }

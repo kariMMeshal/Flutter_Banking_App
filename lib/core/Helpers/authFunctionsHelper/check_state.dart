@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 
 class CheckState {
   CheckState._(); 
@@ -7,9 +8,9 @@ class CheckState {
   static void monitorAuthState() {
     FirebaseAuth.instance.authStateChanges().listen((User? user) {
       if (user == null) {
-        print('===== User is currently signed out! =====');
+        debugPrint('===== User is currently signed out! =====');
       } else {
-        print('===== User is signed in! =====');
+        debugPrint('===== User is signed in! =====');
       }
     });
   }
@@ -19,7 +20,7 @@ class CheckState {
     User? user = FirebaseAuth.instance.currentUser;
 
     if (user != null) {
-      print("Email Verified: ${user.emailVerified}");
+      // print("Email Verified: ${user.emailVerified}");
       return user.emailVerified;
     }
     return false; // Not signed in

@@ -1,4 +1,5 @@
-import 'package:banking_app2/core/Helper/sharedprefs_helper.dart';
+import 'package:banking_app2/core/Helpers/sharedprefs_helper.dart';
+import 'package:banking_app2/features/Auth/presentation/views/register_view.dart';
 import 'package:banking_app2/features/Home/presentation/views/home_view.dart';
 import 'package:banking_app2/features/OnBoarding/presentation/views/onboarding_view.dart';
 import 'package:go_router/go_router.dart';
@@ -14,7 +15,7 @@ abstract class AppRouter {
     
     initialLocation: '/',
     redirect: (context, state) async =>
-        await isLoggedIn() ? HomeView.route : OnBoardingView.route,
+        await isLoggedIn() ? RegisterView.route : OnBoardingView.route,
     routes: [
       GoRoute(
         path: HomeView.route,
@@ -23,6 +24,10 @@ abstract class AppRouter {
       GoRoute(
         path: OnBoardingView.route,
         builder: (context, state) => OnBoardingView(),
+      ),
+      GoRoute(
+        path: RegisterView.route,
+        builder: (context, state) => RegisterView(),
       ),
     ],
   );
