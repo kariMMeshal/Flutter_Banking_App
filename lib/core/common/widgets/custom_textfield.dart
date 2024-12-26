@@ -35,6 +35,9 @@ class CustomTextfield extends StatelessWidget {
         if (val == "") {
           return "Can't be Empty ";
         }
+        if (val!.length < 5) {
+          return "too short";
+        }
         return null;
       },
       controller: myController,

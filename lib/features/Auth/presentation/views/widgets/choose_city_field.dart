@@ -1,19 +1,19 @@
 import 'package:banking_app2/core/utils/constants.dart';
 import 'package:flutter/material.dart';
 
-class ChooseCity extends StatefulWidget {
+class ChooseCityField extends StatefulWidget {
   final Function(String?) onChanged;
 
-  const ChooseCity({
+  const ChooseCityField({
     super.key,
     required this.onChanged,
   });
 
   @override
-  State<ChooseCity> createState() => _ChooseCityState();
+  State<ChooseCityField> createState() => _ChooseCityFieldState();
 }
 
-class _ChooseCityState extends State<ChooseCity> {
+class _ChooseCityFieldState extends State<ChooseCityField> {
   String? _selectedCity;
   final String initialValue = "Cairo";
   List<DropdownMenuItem<String>> cities = [

@@ -13,7 +13,7 @@ class Styles {
   );
   static const TextStyle ktextStyle20 = TextStyle(
     fontSize: 20,
-    fontWeight: FontWeight.w500,
+    fontWeight: FontWeight.w400,
   );
   static const TextStyle ktextStyle24 = TextStyle(
     fontSize: 24,

@@ -1,9 +1,9 @@
+// ignore_for_file: unused_local_variable
+
 import 'package:banking_app2/core/common/styles/styles.dart';
-import 'package:banking_app2/features/Auth/presentation/views/widgets/custom_gender_button.dart';
 import 'package:banking_app2/core/common/widgets/custom_textfield.dart';
-import 'package:banking_app2/core/utils/constants.dart';
-import 'package:banking_app2/features/Auth/presentation/views/widgets/choose_city.dart';
-import 'package:banking_app2/features/Auth/presentation/views/widgets/choose_gender.dart';
+import 'package:banking_app2/features/Auth/presentation/views/widgets/choose_city_field.dart';
+import 'package:banking_app2/features/Auth/presentation/views/widgets/choose_gender_field.dart';
 import 'package:banking_app2/features/Auth/presentation/views/widgets/register_bottom_sheet.dart';
 import 'package:banking_app2/features/Auth/presentation/views/widgets/register_heading.dart';
 import 'package:flutter/material.dart';
@@ -39,7 +39,8 @@ class RegisterViewBody extends StatelessWidget {
               children: [
                 Text("Name", style: Styles.ktextStyle16),
                 CustomTextfield(
-                    hint: "your name", myController: userNameController),
+                    hint: "Enter your Full name",
+                    myController: userNameController),
                 Text("Birth Date", style: Styles.ktextStyle16),
                 CustomTextfield(
                   hint: "YYYY-MM-DD",
@@ -47,14 +48,15 @@ class RegisterViewBody extends StatelessWidget {
                   isDatePicker: true,
                 ),
                 Text("Email", style: Styles.ktextStyle16),
-                CustomTextfield(hint: "Email", myController: emailController),
+                CustomTextfield(
+                    hint: "user@email.com", myController: emailController),
                 SizedBox(height: 10),
-                ChooseGender(),
+                ChooseGenderField(),
                 Text("City", style: Styles.ktextStyle16),
-                ChooseCity(onChanged: (city) => mycity = city),
+                ChooseCityField(onChanged: (city) {}),
                 Text("Phone Number", style: Styles.ktextStyle16),
                 CustomTextfield(
-                  hint: "phone number",
+                  hint: "011........",
                   myController: phoneNumController,
                   inputType: TextInputType.numberWithOptions(),
                 ),

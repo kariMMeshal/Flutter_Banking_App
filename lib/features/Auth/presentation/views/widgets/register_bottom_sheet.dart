@@ -38,7 +38,7 @@ class _RegisterBottomSheetState extends State<RegisterBottomSheet> {
           ],
         ),
         Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             CustomIconButton(
               iconData: Icons.arrow_back,

@@ -1,16 +1,16 @@
 import 'package:banking_app2/features/Auth/presentation/views/widgets/custom_gender_button.dart';
 import 'package:flutter/material.dart';
 
-class ChooseGender extends StatefulWidget {
-  const ChooseGender({
+class ChooseGenderField extends StatefulWidget {
+  const ChooseGenderField({
     super.key,
   });
 
   @override
-  State<ChooseGender> createState() => _ChooseGenderState();
+  State<ChooseGenderField> createState() => _ChooseGenderFieldState();
 }
 
-class _ChooseGenderState extends State<ChooseGender> {
+class _ChooseGenderFieldState extends State<ChooseGenderField> {
   bool isMale = false;
   bool isFemale = false;
   @override

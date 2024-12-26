@@ -1,4 +1,4 @@
-// ignore_for_file: unused_local_variable
+// ignore_for_file: unused_local_variable, use_build_context_synchronously
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:banking_app2/core/Helpers/authFunctionsHelper/check_state.dart';
 import 'package:banking_app2/core/common/widgets/custom_dialog.dart';
