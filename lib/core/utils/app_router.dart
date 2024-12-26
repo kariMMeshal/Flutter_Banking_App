@@ -11,6 +11,7 @@ abstract class AppRouter {
   }
 
   static final router = GoRouter(
+    
     initialLocation: '/',
     redirect: (context, state) async =>
         await isLoggedIn() ? HomeView.route : OnBoardingView.route,

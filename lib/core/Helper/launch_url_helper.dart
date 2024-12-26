@@ -1,5 +1,5 @@
 
-import 'package:banking_app2/core/Helper/custom_snack_bar.dart';
+import 'package:banking_app2/core/common/widgets/custom_snack_bar.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 Future<void> launchUrlHelper(context, {required String url}) async {

@@ -1,5 +1,5 @@
 import 'package:banking_app2/core/Helper/sharedprefs_helper.dart';
-import 'package:banking_app2/core/Helper/styles.dart';
+import 'package:banking_app2/core/common/styles/styles.dart';
 import 'package:banking_app2/features/Home/presentation/views/home_view.dart';
 import 'package:banking_app2/features/OnBoarding/presentation/views/widgets/buildpage_widget.dart';
 import 'package:banking_app2/features/OnBoarding/presentation/views/widgets/custom_icon_button.dart';
@@ -18,7 +18,6 @@ class OnboardingViewBody extends StatefulWidget {
 class OnboardingViewBodyState extends State<OnboardingViewBody> {
   final controller = PageController();
   int currentIndex = 0;
-  static String route = '/';
 
   @override
   void dispose() {
@@ -32,7 +31,6 @@ class OnboardingViewBodyState extends State<OnboardingViewBody> {
       width: MediaQuery.of(context).size.width,
       child: Column(
         children: [
-          // Pass the skipToLastPage callback
           OnboardingAppbar(onSkipTap: skipToLastPage),
           Text("Welcome To ", style: Styles.ktextStyle24),
           Image.asset("assets/images/KWallet.png", height: 60),
