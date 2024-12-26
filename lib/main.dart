@@ -1,25 +1,21 @@
-import 'package:banking_app2/core/Helper/sharedprefs_helper.dart';
-import 'package:banking_app2/features/Home/presentation/views/home_view.dart';
-import 'package:banking_app2/features/OnBoarding/presentation/views/onboarding_view.dart';
+import 'package:banking_app2/core/utils/app_router.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
-  final bool showHome = await SharedPrefsHelper.getBool("showHome") ?? false;
-  runApp(MyApp(showHome: showHome));
+  await Firebase.initializeApp();
+  runApp(BankingApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key, required this.showHome});
-
-  final bool showHome;
+class BankingApp extends StatelessWidget {
+  const BankingApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
+      routerConfig: AppRouter.router,
       debugShowCheckedModeBanner: false,
-      home: showHome ? HomeView() : OnBoardingView(),
     );
   }
 }

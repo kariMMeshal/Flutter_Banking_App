@@ -1,4 +1,4 @@
-import 'package:banking_app2/core/styles.dart';
+import 'package:banking_app2/core/Helper/styles.dart';
 import 'package:flutter/material.dart';
 
 class BuildPage extends StatelessWidget {

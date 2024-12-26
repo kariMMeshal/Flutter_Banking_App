@@ -1,12 +1,12 @@
-
 import 'package:banking_app2/core/Helper/sharedprefs_helper.dart';
-import 'package:banking_app2/core/styles.dart';
+import 'package:banking_app2/core/Helper/styles.dart';
 import 'package:banking_app2/features/Home/presentation/views/home_view.dart';
 import 'package:banking_app2/features/OnBoarding/presentation/views/widgets/buildpage_widget.dart';
 import 'package:banking_app2/features/OnBoarding/presentation/views/widgets/custom_icon_button.dart';
 import 'package:banking_app2/features/OnBoarding/presentation/views/widgets/custom_page_indicator.dart';
 import 'package:banking_app2/features/OnBoarding/presentation/views/widgets/onboarding_appbar.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class OnboardingViewBody extends StatefulWidget {
   const OnboardingViewBody({super.key});
@@ -18,6 +18,7 @@ class OnboardingViewBody extends StatefulWidget {
 class OnboardingViewBodyState extends State<OnboardingViewBody> {
   final controller = PageController();
   int currentIndex = 0;
+  static String route = '/';
 
   @override
   void dispose() {
@@ -94,12 +95,9 @@ class OnboardingViewBodyState extends State<OnboardingViewBody> {
   }
 
   void getStarted() async {
-    await SharedPrefsHelper.saveBool("showHome", true);
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => HomeView()),
-    );
+    await SharedPrefsHelper.saveBool("ShowHome", true);
+    if (mounted) {
+      GoRouter.of(context).push(HomeView.route);
+    }
   }
-
-
 }
