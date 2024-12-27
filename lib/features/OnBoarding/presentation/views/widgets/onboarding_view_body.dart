@@ -1,5 +1,6 @@
 import 'package:banking_app2/core/Helpers/sharedprefs_helper.dart';
 import 'package:banking_app2/core/common/styles/styles.dart';
+import 'package:banking_app2/features/Auth/presentation/views/register_view.dart';
 import 'package:banking_app2/features/Home/presentation/views/home_view.dart';
 import 'package:banking_app2/features/OnBoarding/presentation/views/widgets/buildpage_widget.dart';
 import 'package:banking_app2/features/OnBoarding/presentation/views/widgets/custom_icon_button.dart';
@@ -64,20 +65,20 @@ class OnboardingViewBodyState extends State<OnboardingViewBody> {
         CustomPageIndicator(controller: controller),
         SizedBox(height: 6),
         currentIndex == 3
-            ? InkWell(
-                onTap: getStarted,
-                child: CustomIconButton(iconData: Icons.check),
+            ? CustomIconButton(
+                iconData: Icons.check,
+                ontap: getStarted,
               )
-            : GestureDetector(
-                onTap: () {
-                  controller.animateToPage(
-                    currentIndex + 1,
-                    duration: Duration(milliseconds: 400),
-                    curve: Curves.easeInOut,
-                  );
-                },
-                child: CustomIconButton(iconData: Icons.arrow_forward_ios),
-              ),
+            : CustomIconButton(
+              iconData: Icons.arrow_forward_ios,
+              ontap: () {
+                controller.animateToPage(
+                  currentIndex + 1,
+                  duration: Duration(milliseconds: 400),
+                  curve: Curves.easeInOut,
+                );
+              },
+            ),
       ],
     );
   }
@@ -93,7 +94,7 @@ class OnboardingViewBodyState extends State<OnboardingViewBody> {
   void getStarted() async {
     await SharedPrefsHelper.saveBool("ShowHome", true);
     if (mounted) {
-      GoRouter.of(context).push(HomeView.route);
+      GoRouter.of(context).push(RegisterView.route);
     }
   }
 }

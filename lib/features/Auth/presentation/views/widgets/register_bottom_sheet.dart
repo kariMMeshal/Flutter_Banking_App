@@ -5,8 +5,10 @@ import 'package:banking_app2/features/OnBoarding/presentation/views/widgets/cust
 import 'package:flutter/material.dart';
 
 class RegisterBottomSheet extends StatefulWidget {
-  const RegisterBottomSheet({super.key});
-
+  const RegisterBottomSheet(
+      {super.key, required this.onRegistertap, required this.onbacktap});
+  final Function onRegistertap;
+  final Function onbacktap;
   @override
   State<RegisterBottomSheet> createState() => _RegisterBottomSheetState();
 }
@@ -33,19 +35,23 @@ class _RegisterBottomSheetState extends State<RegisterBottomSheet> {
                   style: Styles.ktextStyle14.copyWith(color: Colors.black)),
               TextSpan(
                   text: "Terms&Conditions",
-                  style: Styles.ktextStyle14.copyWith(color: kPurple , fontWeight: FontWeight.bold)),
+                  style: Styles.ktextStyle14
+                      .copyWith(color: kPurple, fontWeight: FontWeight.bold)),
             ]))
           ],
         ),
         Row(
+          spacing: 10,
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             CustomIconButton(
+              ontap: () => widget.onbacktap(),
               iconData: Icons.arrow_back,
               backgroundColor: Color(0xffebd7f8),
               iconColor: kPurple,
             ),
             CustomButton(
+              onPressed: () => widget.onRegistertap(),
               title: "Register",
               backgroundColor: Color(0xff6d05be),
               width: MediaQuery.of(context).size.width * .75,

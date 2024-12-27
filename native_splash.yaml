@@ -7,6 +7,11 @@ flutter_native_splash:
   color: "#FFFFFF"
   branding: "assets/images/KWallet.png"
   # background_image: "path"
-  
+
+  android_12:
+    image: "assets/images/money.png"
+    color: "#FFFFFF"
+    branding: "assets/images/KWallet.png"
+    # background_image: "path"
 
   # run this in terminal : dart run flutter_native_splash:create --path=native_splash.yaml

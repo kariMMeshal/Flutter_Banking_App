@@ -33,10 +33,15 @@ class CustomTextfield extends StatelessWidget {
       onTap: isDatePicker ? () => _selectDate(context) : null,
       validator: (val) {
         if (val == "") {
-          return "Can't be Empty ";
+          return "Can't be empty";
         }
         if (val!.length < 5) {
           return "too short";
+        }
+        if (isDatePicker &&
+            myController.text ==
+                DateFormat('yyyy-MM-dd').format(DateTime.now())) {
+          return "Choose a valid Birth Date";
         }
         return null;
       },
@@ -47,12 +52,16 @@ class CustomTextfield extends StatelessWidget {
         hintText: hint,
         hintStyle: Styles.ktextStyle14.copyWith(color: Colors.grey),
         enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(25),
-          borderSide: const BorderSide(color: kborder, width: .3),
-        ),
+            borderRadius: BorderRadius.circular(25),
+            borderSide: const BorderSide(color: kborder, width: .3),
+            gapPadding: 15),
         border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(25),
+            borderSide: const BorderSide(color: kborder, width: .3),
+            gapPadding: 15),
+        errorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(25),
-          borderSide: const BorderSide(color: kborder, width: .3),
+          borderSide: const BorderSide(color: Colors.red, width: .3),
         ),
         suffixIcon: isDatePicker ? const Icon(Icons.calendar_today) : null,
       ),

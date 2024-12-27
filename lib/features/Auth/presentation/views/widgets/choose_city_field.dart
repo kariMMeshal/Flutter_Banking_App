@@ -15,7 +15,6 @@ class ChooseCityField extends StatefulWidget {
 
 class _ChooseCityFieldState extends State<ChooseCityField> {
   String? _selectedCity;
-  final String initialValue = "Cairo";
   List<DropdownMenuItem<String>> cities = [
     DropdownMenuItem(value: "Cairo", child: Text("Cairo")),
     DropdownMenuItem(value: "Alexandria", child: Text("Alexandria")),
@@ -40,19 +39,20 @@ class _ChooseCityFieldState extends State<ChooseCityField> {
     DropdownMenuItem(value: "Matruh", child: Text("Matruh")),
     DropdownMenuItem(value: "El Alamein", child: Text("El Alamein")),
   ];
+
   @override
   void initState() {
     super.initState();
-    _selectedCity = initialValue;
+    _selectedCity = null;  // Removing the initial value
   }
 
   @override
   Widget build(BuildContext context) {
     return DropdownButtonFormField<String>(
-      decoration:  InputDecoration(
+      decoration: InputDecoration(
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(25),
-          borderSide: BorderSide(color: kborder , width: .3),
+          borderSide: BorderSide(color: kborder, width: .3),
         ),
       ),
       value: _selectedCity,
@@ -61,7 +61,7 @@ class _ChooseCityFieldState extends State<ChooseCityField> {
       onChanged: (String? newValue) {
         setState(() {
           _selectedCity = newValue;
-          widget.onChanged(newValue); // Call the callback function
+          widget.onChanged(newValue); // Notify parent widget about the selected city
         });
       },
       validator: (value) {
@@ -71,6 +71,7 @@ class _ChooseCityFieldState extends State<ChooseCityField> {
         return null;
       },
       items: cities,
+      hint: Text("Select a city"),  // This adds a hint text when no city is selected.
     );
   }
 }

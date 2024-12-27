@@ -6,7 +6,7 @@ class CustomIconButton extends StatelessWidget {
   final double? width;
   final Color? backgroundColor;
   final Color? iconColor;
-  final Function? ontap;
+  final VoidCallback ontap;
 
   const CustomIconButton({
     super.key,
@@ -15,22 +15,25 @@ class CustomIconButton extends StatelessWidget {
     this.width,
     this.backgroundColor,
     this.iconColor,
-    this.ontap,
+    required this.ontap,
   });
 
   final IconData iconData;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: backgroundColor ?? kPurple,
-        borderRadius: BorderRadius.circular(20),
+    return InkWell(
+      onTap: ontap,
+      child: Container(
+        decoration: BoxDecoration(
+          color: backgroundColor ?? kPurple,
+          borderRadius: BorderRadius.circular(20),
+        ),
+        margin: EdgeInsets.symmetric(vertical: 20),
+        height: height ?? 60,
+        width: width ?? 60,
+        child: Icon(iconData, color: iconColor ?? Colors.white),
       ),
-      margin: EdgeInsets.symmetric(vertical: 20),
-      height: height ?? 60,
-      width: width ?? 60,
-      child: Icon(iconData, color: iconColor ?? Colors.white),
     );
   }
 }
