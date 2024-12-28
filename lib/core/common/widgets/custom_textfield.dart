@@ -53,15 +53,15 @@ class CustomTextfield extends StatelessWidget {
         hintStyle: Styles.ktextStyle14.copyWith(color: Colors.grey),
         enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(25),
-            borderSide: const BorderSide(color: kborder, width: .3),
+            borderSide: const BorderSide(color: kborder, width: .5),
             gapPadding: 15),
         border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(25),
-            borderSide: const BorderSide(color: kborder, width: .3),
+            borderSide: const BorderSide(color: kborder, width: .5),
             gapPadding: 15),
         errorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(25),
-          borderSide: const BorderSide(color: Colors.red, width: .3),
+          borderSide: const BorderSide(color: Colors.red, width: .5),
         ),
         suffixIcon: isDatePicker ? const Icon(Icons.calendar_today) : null,
       ),

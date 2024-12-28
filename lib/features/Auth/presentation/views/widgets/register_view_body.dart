@@ -2,7 +2,6 @@
 
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:banking_app2/core/common/styles/styles.dart';
-import 'package:banking_app2/core/common/widgets/custom_button.dart';
 import 'package:banking_app2/core/common/widgets/custom_dialog.dart';
 import 'package:banking_app2/core/common/widgets/custom_snack_bar.dart';
 import 'package:banking_app2/core/common/widgets/custom_textfield.dart';
@@ -24,11 +23,11 @@ class RegisterViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final formKey = GlobalKey<FormState>();
-    TextEditingController userNameController = TextEditingController();
-    TextEditingController birthDateController = TextEditingController();
-    TextEditingController emailController = TextEditingController();
-    TextEditingController passwordController = TextEditingController();
-    TextEditingController phoneNumController = TextEditingController();
+    final userNameController = TextEditingController();
+    final birthDateController = TextEditingController();
+    final emailController = TextEditingController();
+    final passwordController = TextEditingController();
+    final phoneNumController = TextEditingController();
     String? mycity;
     bool isGenderValid = false;
 
@@ -57,19 +56,20 @@ class RegisterViewBody extends StatelessWidget {
         return ModalProgressHUD(
           inAsyncCall: (state is RegisterLoading),
           child: ListView(
+            physics: const BouncingScrollPhysics(),
             children: [
               RegisterHeading(),
               Container(
                 decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(25),
-                    border: Border.all(color: Colors.grey, width: .2)),
-                height: 680,
+                    border: Border.all(color: kborder, width: .5)),
                 margin: EdgeInsets.symmetric(horizontal: 30),
                 padding: EdgeInsets.all(20),
                 child: Form(
                   key: formKey,
                   child: Column(
+                    spacing: 8.5,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text("Name", style: Styles.ktextStyle16),
@@ -121,13 +121,14 @@ class RegisterViewBody extends StatelessWidget {
                   onbacktap: () =>
                       GoRouter.of(context).go(OnBoardingView.route),
                   onRegistertap: () {
-                    if (!isGenderValid) {
-                      customSnackBar(
-                        context,
-                        title:
-                            "Please Choose Your Gender are you gay or something??",
-                      );
-                    } else if (formKey.currentState!.validate()) {
+                    if (formKey.currentState!.validate()) {
+                      if (!isGenderValid) {
+                        customSnackBar(
+                          context,
+                          title:
+                              "Please Choose Your Gender are you gay or something??",
+                        );
+                      }
                       BlocProvider.of<AuthBloc>(context).add(RegisterEvent(
                         emailAddress: emailController.text.trim().toLowerCase(),
                         password: passwordController.text.trim(),

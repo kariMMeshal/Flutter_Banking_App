@@ -18,10 +18,10 @@ class _RegisterBottomSheetState extends State<RegisterBottomSheet> {
   @override
   Widget build(BuildContext context) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Row(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Checkbox(
                 value: ischecked,
@@ -31,17 +31,16 @@ class _RegisterBottomSheetState extends State<RegisterBottomSheet> {
             RichText(
                 text: TextSpan(children: [
               TextSpan(
-                  text: "By Registering you agree to the ",
+                  text: "Please agree to the ",
                   style: Styles.ktextStyle14.copyWith(color: Colors.black)),
               TextSpan(
-                  text: "Terms&Conditions",
+                  text: "Terms&Conditions ",
                   style: Styles.ktextStyle14
                       .copyWith(color: kPurple, fontWeight: FontWeight.bold)),
             ]))
           ],
         ),
         Row(
-          spacing: 10,
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             CustomIconButton(
