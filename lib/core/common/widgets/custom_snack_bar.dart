@@ -5,9 +5,10 @@ void customSnackBar(context,
     {required String title, int durationInSeconds = 5}) {
   ScaffoldMessenger.of(context).showSnackBar(
     SnackBar(
+      shape: BeveledRectangleBorder(borderRadius: BorderRadius.circular(25)),
       content: Text(title, style: Styles.ktextStyle16),
       duration: Duration(seconds: durationInSeconds),
-      backgroundColor: Colors.deepOrange,
+      backgroundColor: Colors.redAccent,
       behavior: SnackBarBehavior.floating,
     ),
   );

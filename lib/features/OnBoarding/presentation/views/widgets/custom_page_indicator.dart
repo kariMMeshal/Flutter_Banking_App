@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -13,6 +12,8 @@ class CustomPageIndicator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SmoothPageIndicator(
+      onDotClicked: (index) => controller.animateToPage(index,
+          duration: Duration(milliseconds: 400), curve: Curves.easeInOut),
       controller: controller,
       count: 4,
       effect: ExpandingDotsEffect(

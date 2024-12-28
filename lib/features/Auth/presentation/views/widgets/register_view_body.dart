@@ -38,7 +38,7 @@ class RegisterViewBody extends StatelessWidget {
           customDialog(
             context: context,
             message:
-                "Welcome${state.userName} kindly check your mail and verify your gmail then Sign in",
+                "Welcome ${state.userName}\n your account is successfuly created kindly check your mail and verify it then Sign in",
             title: "Success",
             dialogType: DialogType.success,
             btnOkOnPress: () =>
@@ -126,17 +126,19 @@ class RegisterViewBody extends StatelessWidget {
                         customSnackBar(
                           context,
                           title:
-                              "Please Choose Your Gender are you gay or something??",
+                              "Please Choose Your Gender , are you gay or something??",
                         );
+                      } else {
+                        BlocProvider.of<AuthBloc>(context).add(RegisterEvent(
+                          emailAddress:
+                              emailController.text.trim().toLowerCase(),
+                          password: passwordController.text.trim(),
+                          username: userNameController.text.trim(),
+                          city: mycity!,
+                          phoneNumber: phoneNumController.text.trim(),
+                          birthDate: birthDateController.text,
+                        ));
                       }
-                      BlocProvider.of<AuthBloc>(context).add(RegisterEvent(
-                        emailAddress: emailController.text.trim().toLowerCase(),
-                        password: passwordController.text.trim(),
-                        username: userNameController.text.trim(),
-                        city: mycity!,
-                        phoneNumber: phoneNumController.text.trim(),
-                        birthDate: birthDateController.text,
-                      ));
                     }
                   }),
             ],

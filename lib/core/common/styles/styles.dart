@@ -11,6 +11,10 @@ class Styles {
     fontSize: 16,
     fontWeight: FontWeight.w400,
   );
+  static const TextStyle ktextStyle18 = TextStyle(
+    fontSize: 18,
+    fontWeight: FontWeight.w600,
+  );
   static const TextStyle ktextStyle20 = TextStyle(
     fontSize: 20,
     fontWeight: FontWeight.w400,

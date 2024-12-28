@@ -25,7 +25,7 @@ class OnboardingAppbar extends StatelessWidget {
               onPressed: () => onSkipTap(),
               child: Text(
                 "Skip",
-                style: Styles.ktextStyle16,
+                style: Styles.ktextStyle18,
               ))
         ],
       ),

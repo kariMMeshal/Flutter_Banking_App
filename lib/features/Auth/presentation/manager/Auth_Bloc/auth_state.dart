@@ -14,7 +14,7 @@ final class LoginSuccess extends AuthState {
 }
 
 final class LoginFailure extends AuthState {
-  final String? errorMessage;
+  final String errorMessage;
 
   LoginFailure({required this.errorMessage});
 }

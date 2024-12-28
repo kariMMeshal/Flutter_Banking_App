@@ -1,39 +1,57 @@
-import 'package:banking_app2/core/Helpers/authFunctionsHelper/create_account.dart';
+import 'package:banking_app2/features/Auth/data/repos/auth_repo.dart';
 import 'package:bloc/bloc.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:meta/meta.dart';
 
 part 'auth_event.dart';
 part 'auth_state.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
-  AuthBloc() : super(AuthInitial()) {
+  final AuthRepo _authRepo; // Injecting AuthRepo (AuthRepoImpl)
+
+  AuthBloc(this._authRepo) : super(AuthInitial()) {
     on<AuthEvent>((event, emit) async {
       if (event is RegisterEvent) {
         emit(RegisterLoading());
-        try {
-          await createAccount(
-            emailAddress: event.emailAddress,
-            password: event.password,
-            username: event.username,
-            birthDate: event.birthDate,
-            phoneNumber: event.phoneNumber,
-            city: event.city,
-          );
-          emit(RegisterSuccess(userName: event.username));
-        } on FirebaseAuthException catch (ex) {
-          if (ex.code == 'weak-password') {
-            emit(RegisterFailure(errorMessage: "Weak-Pass"));
-          } else if (ex.code == 'email-already-in-use') {
-            emit(RegisterFailure(errorMessage: "email-already-in-use"));
-          } else {
-            emit(RegisterFailure(errorMessage: "Invalid Credentials"));
-          }
-        } catch (ex) {
-          emit(RegisterFailure(
-            errorMessage: " Something Went Wrong please try again :/",
-          ));
-        }
+
+        // Call the createAccount method of AuthRepoImpl
+        final result = await _authRepo.createAccount(
+          emailAddress: event.emailAddress,
+          password: event.password,
+          username: event.username,
+          birthDate: event.birthDate,
+          phoneNumber: event.phoneNumber,
+          city: event.city,
+        );
+        result.fold(
+          (failure) {
+            emit(RegisterFailure(errorMessage: failure.errorMessage));
+          },
+          (user) {
+            emit(RegisterSuccess(userName: user.displayName!));
+          },
+        );
+      } 
+////////////////////////////////////////////////////////////////
+      else if (event is LoginEvent) {
+        emit(LoginLoading());
+
+        // Call the signIn method of AuthRepoImpl
+        final result = await _authRepo.signIn(
+          emailAddress: event.email,
+          password: event.password,
+        );
+
+        // Handling the result with fold
+        result.fold(
+          (failure) {
+            // If failure, emit LoginFailure with the error message
+            emit(LoginFailure(errorMessage: failure.errorMessage));
+          },
+          (user) {
+            // If success, emit LoginSuccess with the user name
+            emit(LoginSuccess(userName: user.displayName!));
+          },
+        );
       }
     });
   }
