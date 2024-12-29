@@ -30,7 +30,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
             emit(RegisterSuccess(userName: user.displayName!));
           },
         );
-      } 
+      }
 ////////////////////////////////////////////////////////////////
       else if (event is LoginEvent) {
         emit(LoginLoading());
@@ -50,6 +50,20 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
           (user) {
             // If success, emit LoginSuccess with the user name
             emit(LoginSuccess(userName: user.displayName!));
+          },
+        );
+      }
+////////////////////////////////////////////////////////////////
+      else if (event is ResetPassEvent) {
+        emit(ResetPassLoading());
+        final result = await _authRepo.resetPassword(emailAddress: event.email);
+
+        result.fold(
+          (failure) {
+            emit(ResetPassFailure(errorMessage: failure.errorMessage));
+          },
+          (success) {
+            emit(ResetPassSuccess());
           },
         );
       }

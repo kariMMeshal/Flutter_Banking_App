@@ -46,6 +46,7 @@ class AuthRepoImpl implements AuthRepo {
     }
   }
 
+///////////////////////////////////////////////////////////////////////////////////////
   @override
   Future<Either<Failures, User>> signIn({
     required String emailAddress,
@@ -68,6 +69,28 @@ class AuthRepoImpl implements AuthRepo {
       return Right(user!);
     } on FirebaseAuthException catch (e) {
       return Left(AuthFailures.forSignIn(e));
+    }
+  }
+
+///////////////////////////////////////////////////////////////////////////////////////
+  @override
+  Future<Either<Failures, bool>> resetPassword(
+      {required String emailAddress}) async {
+    try {
+      final signInMethods =
+          // ignore: deprecated_member_use
+          await FirebaseAuth.instance.fetchSignInMethodsForEmail(emailAddress);
+
+      if (signInMethods.isEmpty) {
+        return Left(AuthFailures('No user found with this email address.'));
+      }
+
+      await FirebaseAuth.instance.sendPasswordResetEmail(email: emailAddress);
+      return const Right(true);
+    } on FirebaseAuthException catch (e) {
+      return Left(
+        AuthFailures.forSignIn(e),
+      ); // Reuse the `AuthFailures` class for errors.
     }
   }
 }

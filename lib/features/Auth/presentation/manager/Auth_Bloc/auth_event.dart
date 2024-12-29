@@ -26,3 +26,9 @@ final class LoginEvent extends AuthEvent {
   final String password;
   LoginEvent({required this.email, required this.password});
 }
+
+final class ResetPassEvent extends AuthEvent {
+  final String email;
+
+  ResetPassEvent({required this.email});
+}

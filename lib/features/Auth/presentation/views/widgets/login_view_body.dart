@@ -5,6 +5,7 @@ import 'package:banking_app2/core/common/widgets/custom_dialog.dart';
 import 'package:banking_app2/core/common/widgets/custom_textfield.dart';
 import 'package:banking_app2/core/utils/constants.dart';
 import 'package:banking_app2/features/Auth/presentation/manager/Auth_Bloc/auth_bloc.dart';
+import 'package:banking_app2/features/Auth/presentation/views/forget_password_view.dart';
 import 'package:banking_app2/features/Auth/presentation/views/register_view.dart';
 import 'package:banking_app2/features/Auth/presentation/views/widgets/login_view_heading.dart';
 import 'package:banking_app2/features/Home/presentation/views/home_view.dart';
@@ -72,7 +73,8 @@ class LoginViewBody extends StatelessWidget {
                       ),
                       SizedBox(height: 10),
                       InkWell(
-                        onTap: () {},
+                        onTap: () =>
+                            GoRouter.of(context).go(ForgetPasswordView.route),
                         child: Text("Forgort Password ? ",
                             style:
                                 Styles.ktextStyle14.copyWith(color: kPurple)),

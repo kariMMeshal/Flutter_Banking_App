@@ -31,3 +31,12 @@ final class RegisterFailure extends AuthState {
   final String errorMessage;
   RegisterFailure({required this.errorMessage});
 }
+
+final class ResetPassLoading extends AuthState {}
+
+final class ResetPassSuccess extends AuthState {}
+
+final class ResetPassFailure extends AuthState {
+  final String errorMessage;
+  ResetPassFailure({required this.errorMessage});
+}

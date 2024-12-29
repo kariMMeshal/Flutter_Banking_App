@@ -1,6 +1,7 @@
 import 'package:banking_app2/core/Helpers/sharedprefs_helper.dart';
 import 'package:banking_app2/features/Auth/data/repos/auth_repo_impl.dart';
 import 'package:banking_app2/features/Auth/presentation/manager/Auth_Bloc/auth_bloc.dart';
+import 'package:banking_app2/features/Auth/presentation/views/forget_password_view.dart';
 import 'package:banking_app2/features/Auth/presentation/views/login_view.dart';
 import 'package:banking_app2/features/Auth/presentation/views/register_view.dart';
 import 'package:banking_app2/features/Home/presentation/views/home_view.dart';
@@ -35,6 +36,13 @@ abstract class AppRouter {
         builder: (context, state) => BlocProvider(
           create: (context) => AuthBloc(AuthRepoImpl()),
           child: RegisterView(),
+        ),
+      ),
+      GoRoute(
+        path: ForgetPasswordView.route,
+        builder: (context, state) => BlocProvider(
+          create: (context) => AuthBloc(AuthRepoImpl()),
+          child: ForgetPasswordView(),
         ),
       ),
     ],
