@@ -1,6 +1,5 @@
 import 'package:banking_app2/core/Helpers/sharedprefs_helper.dart';
 import 'package:banking_app2/core/utils/dependency_injection.dart';
-import 'package:banking_app2/features/Auth/data/repos/auth_repo_impl.dart';
 import 'package:banking_app2/features/Auth/presentation/manager/Auth_Bloc/auth_bloc.dart';
 import 'package:banking_app2/features/Auth/presentation/views/forget_password_view.dart';
 import 'package:banking_app2/features/Auth/presentation/views/login_view.dart';

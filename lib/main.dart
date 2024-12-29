@@ -5,16 +5,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   await initializeApp();
+  await setupLocator(); // Set up GetIt dependency injection.
+
+  FlutterNativeSplash.remove();
 
   runApp(BankingApp());
 }
 
 Future<void> initializeApp() async {
-  WidgetsFlutterBinding.ensureInitialized(); 
-  await setupLocator(); // Set up GetIt dependency injection.
-  await Firebase.initializeApp(); 
-  FlutterNativeSplash.preserve(widgetsBinding: WidgetsFlutterBinding.ensureInitialized()); // Preserve splash screen.
+  await Firebase.initializeApp();
+  await Future.delayed(Duration(seconds: 2));
 }
 
 class BankingApp extends StatelessWidget {
