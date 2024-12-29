@@ -29,7 +29,7 @@ class AuthFailures extends Failures {
         errorMessage = 'Too many attempts. Please try again later.';
         break;
       default:
-        errorMessage = 'An unknown error occurred. Please try again.';
+        errorMessage = 'Invalid Credintial (email or Password)\n Please try again.';
     }
 
     return AuthFailures(errorMessage);

@@ -1,19 +1,20 @@
 import 'package:banking_app2/core/utils/app_router.dart';
+import 'package:banking_app2/core/utils/dependency_injection.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
   await initializeApp();
-  FlutterNativeSplash.remove();
 
   runApp(BankingApp());
 }
 
 Future<void> initializeApp() async {
-  await Firebase.initializeApp();
-  await Future.delayed(Duration(seconds: 2));
+  WidgetsFlutterBinding.ensureInitialized(); 
+  await setupLocator(); // Set up GetIt dependency injection.
+  await Firebase.initializeApp(); 
+  FlutterNativeSplash.preserve(widgetsBinding: WidgetsFlutterBinding.ensureInitialized()); // Preserve splash screen.
 }
 
 class BankingApp extends StatelessWidget {
