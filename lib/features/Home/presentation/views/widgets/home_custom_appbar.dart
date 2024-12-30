@@ -6,8 +6,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class HomeCustomAppbar extends StatelessWidget {
-  const HomeCustomAppbar({super.key});
-
+  const HomeCustomAppbar({super.key, required this.currentBalance});
+  final num currentBalance;
   @override
   Widget build(BuildContext context) {
     final user = locator.get<FirebaseAuth>().currentUser;
@@ -17,7 +17,7 @@ class HomeCustomAppbar extends StatelessWidget {
         Container(
           padding: EdgeInsets.all(8),
           decoration: BoxDecoration(
-            color: Colors.indigo,
+            color: kPurple,
             borderRadius: BorderRadius.only(
               bottomLeft: Radius.circular(15),
               bottomRight: Radius.circular(15),
@@ -41,7 +41,7 @@ class HomeCustomAppbar extends StatelessWidget {
                 style: Styles.ktextStyle18.copyWith(color: Colors.white),
               ),
               Text(
-                "\$ 1,245",
+                "\$${currentBalance.toStringAsFixed(2)}",
                 style: Styles.ktextStyle24.copyWith(color: Colors.white),
               ),
               SizedBox(height: 20),
