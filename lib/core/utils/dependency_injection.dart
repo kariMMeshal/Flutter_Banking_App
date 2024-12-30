@@ -4,6 +4,8 @@ import 'package:banking_app2/features/Auth/presentation/manager/Auth_Bloc/auth_b
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get_it/get_it.dart';
 
+// this is the [ Dependency Injection ] class 
+
 final GetIt locator = GetIt.instance;
 
 Future<void> setupLocator() async {

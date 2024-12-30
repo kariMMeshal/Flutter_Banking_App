@@ -1,6 +1,7 @@
 import 'package:banking_app2/core/Helpers/sharedprefs_helper.dart';
 import 'package:banking_app2/core/common/styles/styles.dart';
 import 'package:banking_app2/features/Auth/presentation/views/login_view.dart';
+import 'package:banking_app2/features/Home/presentation/views/home_view.dart';
 import 'package:banking_app2/features/OnBoarding/presentation/views/widgets/buildpage_widget.dart';
 import 'package:banking_app2/features/OnBoarding/presentation/views/widgets/custom_icon_button.dart';
 import 'package:banking_app2/features/OnBoarding/presentation/views/widgets/custom_page_indicator.dart';
@@ -45,6 +46,7 @@ class OnboardingViewBodyState extends State<OnboardingViewBody> {
               BuildPage(
                 title: "Welcome to KWallet",
                 imgUrl: "assets/images/9462114.jpg",
+                
               ),
               BuildPage(
                 title: "Financial Services",
@@ -93,7 +95,7 @@ class OnboardingViewBodyState extends State<OnboardingViewBody> {
   void getStarted() async {
     await SharedPrefsHelper.saveBool("ShowHome", true);
     if (mounted) {
-      GoRouter.of(context).push(LoginView.route);
+      GoRouter.of(context).push(HomeView.route);
     }
   }
 }

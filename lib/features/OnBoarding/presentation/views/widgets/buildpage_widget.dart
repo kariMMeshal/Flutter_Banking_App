@@ -19,12 +19,12 @@ class BuildPage extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         SizedBox(
-            height: MediaQuery.of(context).size.height * .47,
+            height: MediaQuery.of(context).size.height * .40,
             child: Image.asset(imgUrl)),
-        Text(title, style: Styles.ktextStyle28),
+        Text(title, style: Styles.ktextStyle24),
         Text(
           subTitle ?? "",
-          style: Styles.ktextStyle16
+          style: Styles.ktextStyle14
               .copyWith(color: Colors.black.withValues(alpha: 0.5)),
         )
       ],

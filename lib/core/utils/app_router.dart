@@ -1,4 +1,3 @@
-import 'package:banking_app2/core/Helpers/sharedprefs_helper.dart';
 import 'package:banking_app2/core/utils/dependency_injection.dart';
 import 'package:banking_app2/features/Auth/presentation/manager/Auth_Bloc/auth_bloc.dart';
 import 'package:banking_app2/features/Auth/presentation/views/forget_password_view.dart';
@@ -10,10 +9,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 abstract class AppRouter {
-  static Future<bool> isLoggedIn() async {
-    final bool showHome = await SharedPrefsHelper.getBool("ShowHome") ?? false;
-    return showHome;
-  }
+
+  // static Future<bool> isLoggedIn() async {
+  //   final bool showHome = await SharedPrefsHelper.getBool("ShowHome") ?? false;
+  //   return showHome;
+  // }
 
   static final router = GoRouter(
     routes: [

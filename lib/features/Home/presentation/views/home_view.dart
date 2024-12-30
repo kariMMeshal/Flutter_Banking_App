@@ -1,4 +1,5 @@
 import 'package:banking_app2/core/utils/constants.dart';
+import 'package:banking_app2/features/Home/presentation/views/widgets/home_view_body.dart';
 import 'package:flutter/material.dart';
 
 class HomeView extends StatelessWidget {
@@ -9,7 +10,7 @@ class HomeView extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         backgroundColor: klightBackground,
-        body: Center(child: Text("Home Page ")),
+        body: const HomeViewBody(),
       ),
     );
   }
