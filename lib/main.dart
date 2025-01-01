@@ -1,8 +1,10 @@
 import 'package:banking_app2/core/utils/app_router.dart';
 import 'package:banking_app2/core/utils/constants.dart';
 import 'package:banking_app2/core/utils/dependency_injection.dart';
+import 'package:banking_app2/features/Home/presentation/manager/Wallet_Cubit/wallet_cubit.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -25,14 +27,17 @@ class BankingApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      routerConfig: AppRouter.router,
-      debugShowCheckedModeBanner: false,
-              theme: ThemeData.light().copyWith(
+    return BlocProvider(
+      create: (context) => locator.get<WalletCubit>()..fetchSalary(),
+      child: MaterialApp.router(
+        routerConfig: AppRouter.router,
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData.light().copyWith(
           scaffoldBackgroundColor: klightBackground,
           textTheme:
               GoogleFonts.montserratTextTheme(ThemeData.light().textTheme),
         ),
+      ),
     );
   }
 }

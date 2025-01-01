@@ -1,8 +1,7 @@
 import 'package:banking_app2/core/common/styles/styles.dart';
 import 'package:banking_app2/core/utils/constants.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart'
-    hide TextDirection; // Hide TextDirection from intl
+import 'package:intl/intl.dart' hide TextDirection; // Hide TextDirection from intl
 
 class CustomTextfield extends StatelessWidget {
   final String hint;
@@ -10,6 +9,7 @@ class CustomTextfield extends StatelessWidget {
   final bool isHidden;
   final bool isDatePicker;
   final TextInputType? inputType;
+  final String? Function(String?)? validator; // Updated validator type
 
   const CustomTextfield({
     super.key,
@@ -18,10 +18,12 @@ class CustomTextfield extends StatelessWidget {
     this.isHidden = false,
     this.isDatePicker = false,
     this.inputType,
+    this.validator, // Made validator optional
   });
 
   @override
   Widget build(BuildContext context) {
+    // Set initial date for date picker if the field is empty
     if (isDatePicker && myController.text.isEmpty) {
       myController.text = DateFormat('yyyy-MM-dd').format(DateTime.now());
     }
@@ -31,20 +33,7 @@ class CustomTextfield extends StatelessWidget {
       obscureText: isHidden,
       readOnly: isDatePicker,
       onTap: isDatePicker ? () => _selectDate(context) : null,
-      validator: (val) {
-        if (val == "") {
-          return "Can't be empty";
-        }
-        if (val!.length < 5) {
-          return "too short";
-        }
-        if (isDatePicker &&
-            myController.text ==
-                DateFormat('yyyy-MM-dd').format(DateTime.now())) {
-          return "Choose a valid Birth Date";
-        }
-        return null;
-      },
+      validator: validator, // Pass the validator directly
       controller: myController,
       style: Styles.ktextStyle16,
       decoration: InputDecoration(
@@ -52,16 +41,18 @@ class CustomTextfield extends StatelessWidget {
         hintText: hint,
         hintStyle: Styles.ktextStyle14.copyWith(color: Colors.grey),
         enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(25),
-            borderSide: const BorderSide(color: kborder, width: .5),
-            gapPadding: 15),
+          borderRadius: BorderRadius.circular(25),
+          borderSide: const BorderSide(color: kborder, width: 0.5),
+          gapPadding: 15,
+        ),
         border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(25),
-            borderSide: const BorderSide(color: kborder, width: .5),
-            gapPadding: 15),
+          borderRadius: BorderRadius.circular(25),
+          borderSide: const BorderSide(color: kborder, width: 0.5),
+          gapPadding: 15,
+        ),
         errorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(25),
-          borderSide: const BorderSide(color: Colors.red, width: .5),
+          borderSide: const BorderSide(color: Colors.red, width: 0.5),
         ),
         suffixIcon: isDatePicker ? const Icon(Icons.calendar_today) : null,
       ),

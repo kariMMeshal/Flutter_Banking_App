@@ -5,8 +5,8 @@ import 'package:banking_app2/core/utils/constants.dart';
 import 'package:flutter/material.dart';
 
 class SalaryProgressIndicator extends StatefulWidget {
-  final double totalSalary;
-  final double remainingSalary;
+  final num totalSalary;
+  final num remainingSalary;
 
   const SalaryProgressIndicator({
     super.key,

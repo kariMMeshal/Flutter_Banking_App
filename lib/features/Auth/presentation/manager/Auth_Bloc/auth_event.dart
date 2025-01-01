@@ -10,8 +10,10 @@ final class RegisterEvent extends AuthEvent {
   final String city;
   final String phoneNumber;
   final String birthDate;
+  final num salary;
 
   RegisterEvent({
+    required this.salary,
     required this.emailAddress,
     required this.password,
     required this.username,

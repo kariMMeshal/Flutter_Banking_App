@@ -21,6 +21,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
           birthDate: event.birthDate,
           phoneNumber: event.phoneNumber,
           city: event.city,
+          totalSalary: event.salary,
+          reminingSalary: event.salary,
         );
         result.fold(
           (failure) {

@@ -5,6 +5,7 @@ import 'package:banking_app2/core/common/styles/styles.dart';
 import 'package:banking_app2/core/common/widgets/custom_dialog.dart';
 import 'package:banking_app2/core/common/widgets/custom_snack_bar.dart';
 import 'package:banking_app2/core/common/widgets/custom_textfield.dart';
+import 'package:banking_app2/core/utils/Validator.dart';
 import 'package:banking_app2/core/utils/constants.dart';
 import 'package:banking_app2/features/Auth/presentation/manager/Auth_Bloc/auth_bloc.dart';
 import 'package:banking_app2/features/Auth/presentation/views/login_view.dart';
@@ -28,6 +29,7 @@ class RegisterViewBody extends StatelessWidget {
     final emailController = TextEditingController();
     final passwordController = TextEditingController();
     final phoneNumController = TextEditingController();
+    final salaryController = TextEditingController();
     String? mycity;
     bool isGenderValid = false;
 
@@ -74,16 +76,19 @@ class RegisterViewBody extends StatelessWidget {
                     children: [
                       Text("Name", style: Styles.ktextStyle16),
                       CustomTextfield(
+                          validator: Validator.validateName,
                           hint: "Enter your Full name",
                           myController: userNameController),
                       Text("Birth Date", style: Styles.ktextStyle16),
                       CustomTextfield(
+                        validator: Validator.validateBirthDate,
                         hint: "YYYY-MM-DD",
                         myController: birthDateController,
                         isDatePicker: true,
                       ),
                       Text("Email", style: Styles.ktextStyle16),
                       CustomTextfield(
+                          validator: Validator.validateEmail,
                           hint: "user@email.com",
                           myController: emailController),
                       SizedBox(height: 10),
@@ -93,12 +98,21 @@ class RegisterViewBody extends StatelessWidget {
                       ChooseCityField(onChanged: (city) => mycity = city),
                       Text("Phone Number", style: Styles.ktextStyle16),
                       CustomTextfield(
+                        validator: Validator.validatePhoneNumber,
                         hint: "015........",
                         myController: phoneNumController,
                         inputType: TextInputType.phone,
                       ),
+                      Text("Current Salary", style: Styles.ktextStyle16),
+                      CustomTextfield(
+                        validator: Validator.validateSalary,
+                        inputType: TextInputType.phone,
+                        hint: "\$5000...",
+                        myController: salaryController,
+                      ),
                       Text("Password", style: Styles.ktextStyle16),
                       CustomTextfield(
+                        validator: Validator.validatePassword,
                         hint: "Password",
                         myController: passwordController,
                         isHidden: true,
@@ -121,30 +135,54 @@ class RegisterViewBody extends StatelessWidget {
                   onbacktap: () =>
                       GoRouter.of(context).go(OnBoardingView.route),
                   onRegistertap: () {
-                    if (formKey.currentState!.validate()) {
-                      if (!isGenderValid) {
-                        customSnackBar(
-                          context,
-                          title:
-                              "Please Choose Your Gender , are you gay or something??",
-                        );
-                      } else {
-                        BlocProvider.of<AuthBloc>(context).add(RegisterEvent(
-                          emailAddress:
-                              emailController.text.trim().toLowerCase(),
-                          password: passwordController.text.trim(),
-                          username: userNameController.text.trim(),
-                          city: mycity!,
-                          phoneNumber: phoneNumController.text.trim(),
-                          birthDate: birthDateController.text,
-                        ));
-                      }
-                    }
+                    handleRegister(
+                        formKey,
+                        isGenderValid,
+                        context,
+                        salaryController,
+                        emailController,
+                        passwordController,
+                        userNameController,
+                        mycity,
+                        phoneNumController,
+                        birthDateController);
                   }),
             ],
           ),
         );
       },
     );
+  }
+
+  void handleRegister(
+      GlobalKey<FormState> formKey,
+      bool isGenderValid,
+      BuildContext context,
+      TextEditingController salaryController,
+      TextEditingController emailController,
+      TextEditingController passwordController,
+      TextEditingController userNameController,
+      String? mycity,
+      TextEditingController phoneNumController,
+      TextEditingController birthDateController) {
+    if (formKey.currentState!.validate()) {
+      if (!isGenderValid) {
+        customSnackBar(
+          context,
+          title: " Please Choose Your Gender",
+        );
+      } else {
+        final num usersalary = num.parse(salaryController.text.trim());
+        BlocProvider.of<AuthBloc>(context).add(RegisterEvent(
+          salary: usersalary,
+          emailAddress: emailController.text.trim().toLowerCase(),
+          password: passwordController.text.trim(),
+          username: userNameController.text.trim(),
+          city: mycity!,
+          phoneNumber: phoneNumController.text.trim(),
+          birthDate: birthDateController.text,
+        ));
+      }
+    }
   }
 }

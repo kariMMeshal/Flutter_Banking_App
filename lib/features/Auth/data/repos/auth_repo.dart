@@ -10,6 +10,8 @@ abstract class AuthRepo {
     required String birthDate,
     required String phoneNumber,
     required String city,
+    required num totalSalary,
+    required num reminingSalary,
   });
   Future<Either<Failures, User>> signIn({
     required String emailAddress,
