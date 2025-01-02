@@ -12,25 +12,6 @@ class WalletCubit extends Cubit<WalletState> {
   num amount = 0.0; // Remaining amount
   num totalSalary = 0.0;
 
-  // Helper method to update Firestore
-  Future<void> _updateFirestore(
-      {num? totalSalary, num? remainingAmount}) async {
-    try {
-      final Map<String, dynamic> updateData = {};
-      if (totalSalary != null) updateData['totalSalary'] = totalSalary;
-      if (remainingAmount != null) {
-        updateData['remainingAmount'] = remainingAmount;
-      }
-
-      await FirebaseFirestore.instance
-          .collection('users')
-          .doc(_firebaseAuth.currentUser!.uid)
-          .update(updateData);
-    } catch (e) {
-      emit(WalletError(message: 'Error updating Firestore: $e'));
-    }
-  }
-
   // Fetch salary from Firestore
   Future<void> fetchSalary() async {
     emit(WalletLoading());
@@ -77,5 +58,24 @@ class WalletCubit extends Cubit<WalletState> {
     totalSalary = newSalary;
     await _updateFirestore(totalSalary: newSalary);
     emit(WalletUpdated(totalSalary: newSalary, remainingAmount: amount));
+  }
+
+  // Helper method to update Firestore
+  Future<void> _updateFirestore(
+      {num? totalSalary, num? remainingAmount}) async {
+    try {
+      final Map<String, dynamic> updateData = {};
+      if (totalSalary != null) updateData['totalSalary'] = totalSalary;
+      if (remainingAmount != null) {
+        updateData['remainingAmount'] = remainingAmount;
+      }
+
+      await FirebaseFirestore.instance
+          .collection('users')
+          .doc(_firebaseAuth.currentUser!.uid)
+          .update(updateData);
+    } catch (e) {
+      emit(WalletError(message: 'Error updating Firestore: $e'));
+    }
   }
 }

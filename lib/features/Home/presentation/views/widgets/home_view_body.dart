@@ -1,4 +1,5 @@
 import 'package:banking_app2/core/common/styles/styles.dart';
+import 'package:banking_app2/core/common/widgets/custom_loading_indecator.dart';
 import 'package:banking_app2/features/Home/presentation/manager/Wallet_Cubit/wallet_cubit.dart';
 import 'package:banking_app2/features/Home/presentation/views/widgets/home_custom_appbar.dart';
 import 'package:banking_app2/features/Home/presentation/views/widgets/salary_progress_indecator.dart';
@@ -13,7 +14,7 @@ class HomeViewBody extends StatelessWidget {
     return BlocBuilder<WalletCubit, WalletState>(
       builder: (context, state) {
         if (state is WalletLoading) {
-          return const Center(child: CircularProgressIndicator());
+          return CustomLoadingIndecator();
         } else if (state is WalletError) {
           return Center(child: Text('Error: ${state.message}'));
         } else if (state is WalletUpdated) {
@@ -26,7 +27,7 @@ class HomeViewBody extends StatelessWidget {
               HomeCustomAppbar(currentBalance: currentBalance),
               Padding(
                 padding: const EdgeInsets.only(left: 20, top: 20),
-                child: Text("Usage : ", style: Styles.ktextStyle18),
+                child: Text("Usage : ", style: Styles.ktextStyle20),
               ),
               SalaryProgressIndicator(
                 totalSalary: totalSalary,
