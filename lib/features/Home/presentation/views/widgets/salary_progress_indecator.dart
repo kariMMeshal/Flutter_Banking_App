@@ -15,7 +15,9 @@ class SalaryProgressIndicator extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final double progress = remainingSalary / totalSalary;
+    // Calculate progress, ensuring it's between 0 and 1
+    final double progress =
+        totalSalary > 0 ? (remainingSalary / totalSalary).clamp(0, 1) : 0;
 
     return TweenAnimationBuilder<double>(
       tween: Tween<double>(begin: 0, end: progress),
@@ -23,7 +25,7 @@ class SalaryProgressIndicator extends StatelessWidget {
       curve: Curves.easeInOut,
       builder: (context, value, child) {
         return CircularPercentIndicator(
-          progressColor: Color.lerp(kBlue, kPurple, progress)!,
+          progressColor: Color.lerp(kBlue, kPurple, value)!,
           radius: 100,
           lineWidth: 10,
           percent: value,
