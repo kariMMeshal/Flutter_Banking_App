@@ -2,6 +2,7 @@ import 'package:banking_app2/core/common/styles/styles.dart';
 import 'package:banking_app2/core/common/widgets/custom_loading_indecator.dart';
 import 'package:banking_app2/features/Home/presentation/manager/Wallet_Cubit/wallet_cubit.dart';
 import 'package:banking_app2/features/Home/presentation/views/widgets/home_custom_appbar.dart';
+import 'package:banking_app2/features/Home/presentation/views/widgets/home_services_section.dart';
 import 'package:banking_app2/features/Home/presentation/views/widgets/salary_progress_indecator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -14,7 +15,7 @@ class HomeViewBody extends StatelessWidget {
     return BlocBuilder<WalletCubit, WalletState>(
       builder: (context, state) {
         if (state is WalletLoading) {
-          return CustomLoadingIndecator();
+          return CustomLoadingIndicator();
         } else if (state is WalletError) {
           return Center(child: Text('Error: ${state.message}'));
         } else if (state is WalletUpdated) {
@@ -27,12 +28,17 @@ class HomeViewBody extends StatelessWidget {
               HomeCustomAppbar(currentBalance: currentBalance),
               Padding(
                 padding: const EdgeInsets.only(left: 20, top: 20),
-                child: Text("Usage : ", style: Styles.ktextStyle20),
+                child: Text("Usage", style: Styles.ktextStyle16),
               ),
               SalaryProgressIndicator(
                 totalSalary: totalSalary,
                 remainingSalary: currentBalance,
               ),
+              Padding(
+                padding: const EdgeInsets.only(left: 20, top: 20, bottom: 5),
+                child: Text("Services", style: Styles.ktextStyle16),
+              ),
+              HomeServicesSection(),
             ],
           );
         } else {

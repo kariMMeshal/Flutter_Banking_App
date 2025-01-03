@@ -1,7 +1,7 @@
 import 'package:banking_app2/core/common/styles/styles.dart';
 import 'package:banking_app2/core/common/widgets/custom_button.dart';
 import 'package:banking_app2/core/utils/constants.dart';
-import 'package:banking_app2/features/OnBoarding/presentation/views/widgets/custom_icon_button.dart';
+import 'package:banking_app2/core/common/widgets/custom_icon_button.dart';
 import 'package:flutter/material.dart';
 
 class RegisterBottomSheet extends StatefulWidget {

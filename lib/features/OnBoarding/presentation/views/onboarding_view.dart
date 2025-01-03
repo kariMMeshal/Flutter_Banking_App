@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 class OnBoardingView extends StatelessWidget {
   const OnBoardingView({super.key});
-  static String route = '/';
+  static String route = '/onboardingView';
   @override
   Widget build(BuildContext context) {
     return SafeArea(
