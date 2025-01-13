@@ -25,27 +25,32 @@ class ServicesIconButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        InkWell(
-          onTap: ontap,
-          child: Container(
-            decoration: BoxDecoration(
-              color: backgroundColor ?? kPurple,
-              borderRadius: BorderRadius.circular(20),
-            ),
-            height: height ?? 60,
-            width: width ?? 60,
-            child: Icon(
+    return Container(
+      decoration: BoxDecoration(
+          color: backgroundColor ?? Colors.white,
+          borderRadius: BorderRadius.circular(10),
+          border: Border.all(color: Colors.grey, width: .01)),
+      height: height ?? 80,
+      width: width ?? 80,
+      child: InkWell(
+        onTap: ontap,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Icon(
               iconData,
-              color: iconColor ?? Colors.white,
-              size: 30,
+              color: iconColor ?? Colors.indigoAccent,
+              size: 32,
             ),
-          ),
+            Text(
+              bottomText!,
+              style: Styles.ktextStyle10,
+              textAlign: TextAlign.center,
+            )
+          ],
         ),
-        Text(bottomText!, style: Styles.ktextStyle10)
-      ],
+      ),
     );
   }
 }

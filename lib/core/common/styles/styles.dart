@@ -34,5 +34,6 @@ class Styles {
   static const TextStyle ktextStyle10 = TextStyle(
     fontSize: 10,
     fontWeight: FontWeight.w600,
+    color: Color(0xff979787)
   );
 }

@@ -1,6 +1,7 @@
 import 'package:banking_app2/core/utils/constants.dart';
 import 'package:banking_app2/features/Home/presentation/views/widgets/services_icon_button.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class HomeServicesSection extends StatelessWidget {
   const HomeServicesSection({super.key});
@@ -9,11 +10,11 @@ class HomeServicesSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-          color: Colors.white,
+          // color: Colors.white,
           borderRadius: BorderRadius.circular(10),
           border: Border.all(color: kborder, width: .01)),
-      margin: EdgeInsets.symmetric(horizontal: 20),
-      padding: EdgeInsets.all(20),
+      margin: EdgeInsets.symmetric(horizontal: 15),
+      padding: EdgeInsets.all(15),
       child: Column(
         spacing: 15,
         mainAxisAlignment: MainAxisAlignment.center,
@@ -23,34 +24,60 @@ class HomeServicesSection extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               ServicesIconButton(
-                  iconData: Icons.arrow_upward_rounded,
+                  iconData: FontAwesomeIcons.wallet,
+                  iconColor: Colors.indigo,
                   ontap: () {},
-                  bottomText: "Pay"),
+                  bottomText: "ًWallet"),
               ServicesIconButton(
-                  iconData: Icons.arrow_downward_rounded,
+                  iconData: FontAwesomeIcons.moneyBillTransfer,
+                  iconColor: Colors.green,
                   ontap: () {},
-                  bottomText: "Recieve"),
+                  bottomText: "Transfer"),
               ServicesIconButton(
-                  iconData: Icons.receipt_long_rounded,
+                  iconData:FontAwesomeIcons.handHoldingDollar,
+                  iconColor: Color(0xffE1169A),
                   ontap: () {},
-                  bottomText: "pills"),
+                  bottomText: "withdraw"),
             ],
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               ServicesIconButton(
-                  iconData: Icons.compare_arrows_rounded,
+                  iconData: FontAwesomeIcons.solidCreditCard,
+                  iconColor: Color(0xffFB6B18),
                   ontap: () {},
-                  bottomText: "Transactions"),
+                  bottomText: "Credit\nCard"),
+                ServicesIconButton(
+                  iconData:FontAwesomeIcons.receipt,
+                  iconColor: Color(0xff52D5BA),
+                  ontap: () {},
+                  bottomText: "pills"),
               ServicesIconButton(
-                  iconData: Icons.credit_card,
+                  iconData:FontAwesomeIcons.moneyBillTrendUp,
+                  iconColor: Color(0xffFFAF2A),
                   ontap: () {},
-                  bottomText: "Credit card"),
+                  bottomText: "Deposit"),
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+                ServicesIconButton(
+                  iconData: Icons.receipt_long,
+                  iconColor: Colors.deepPurple,
+                  ontap: () {},
+                  bottomText: "Transactions\nreport"),
               ServicesIconButton(
-                  iconData: Icons.attach_money_rounded,
+                  iconData: FontAwesomeIcons.handHoldingHeart,
+                  iconColor: Color(0xffFF4267),
                   ontap: () {},
-                  bottomText: "History"),
+                  bottomText: "Donations"),
+              ServicesIconButton(
+                  iconData: FontAwesomeIcons.vault,
+                  iconColor: Color(0xff5655B9),
+                  ontap: () {},
+                  bottomText: "Savings"),
             ],
           ),
         ],
