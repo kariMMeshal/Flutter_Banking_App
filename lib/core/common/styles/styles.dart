@@ -33,7 +33,7 @@ class Styles {
   );
   static const TextStyle ktextStyle10 = TextStyle(
     fontSize: 10,
-    fontWeight: FontWeight.w600,
+    fontWeight: FontWeight.w800,
     color: Color(0xff979787)
   );
 }

@@ -4,7 +4,6 @@ import 'package:banking_app2/features/OnBoarding/presentation/views/onboarding_v
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
-
 import 'package:go_router/go_router.dart';
 
 class SplashViewBody extends StatefulWidget {
@@ -15,8 +14,8 @@ class SplashViewBody extends StatefulWidget {
 }
 
 class SplashViewBodyState extends State<SplashViewBody> {
-  double _dimension = 150;
-  bool _isScaledUp = false;
+  double _dimension = 140;
+  Timer? _timer;
 
   @override
   void initState() {
@@ -26,42 +25,46 @@ class SplashViewBodyState extends State<SplashViewBody> {
   }
 
   void _startScalingAnimation() {
-    Timer.periodic(const Duration(seconds: 1), (timer) {
-      setState(() {
-        _dimension = _isScaledUp ? 150 : 190;
-        _isScaledUp = !_isScaledUp;
-      });
+    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
+      if (mounted) {
+        setState(() {
+          _dimension = _dimension == 140 ? 160 : 140;
+        });
+      }
     });
   }
 
   void _navigateAfterAnimation() async {
-    await Future.delayed(Duration(seconds: 3)); // Wait for 3 seconds
+    await Future.delayed(const Duration(seconds: 3));
+
+    if (!mounted) return;
 
     try {
-      bool isSignedIn = await _checkIfUserIsSignedIn();
+      final isSignedIn = await _checkIfUserIsSignedIn();
+      if (!mounted) return;
 
-      if (mounted) {
-        if (isSignedIn) {
-          GoRouter.of(context).go(HomeView.route);
-        } else {
-          GoRouter.of(context).go(OnBoardingView.route);
-        }
-      }
+      final route = isSignedIn ? HomeView.route : OnBoardingView.route;
+      GoRouter.of(context).go(route);
     } catch (e) {
-      if (mounted) {
-        GoRouter.of(context).go(OnBoardingView.route); // Fallback to onboarding
-      }
+      if (!mounted) return;
+      GoRouter.of(context).go(OnBoardingView.route); // Fallback to onboarding
     }
   }
 
   Future<bool> _checkIfUserIsSignedIn() async {
     try {
-      FirebaseAuth firebaseAuth = locator.get<FirebaseAuth>();
-      User? user = firebaseAuth.currentUser;
-      return user != null;
+      final firebaseAuth = locator.get<FirebaseAuth>();
+      return firebaseAuth.currentUser != null;
     } catch (e) {
       return false;
     }
+  }
+
+  @override
+  void dispose() {
+    _timer
+        ?.cancel(); // Cancel the timer to avoid calling setState() after dispose
+    super.dispose();
   }
 
   @override
@@ -73,7 +76,7 @@ class SplashViewBodyState extends State<SplashViewBody> {
             child: AnimatedContainer(
               width: _dimension,
               height: _dimension,
-              duration: const Duration(seconds: 1),
+              duration: const Duration(milliseconds: 800),
               curve: Curves.easeInOut,
               child: Image.asset("assets/images/money.png"),
             ),

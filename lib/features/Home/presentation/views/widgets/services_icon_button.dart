@@ -1,5 +1,4 @@
 import 'package:banking_app2/core/common/styles/styles.dart';
-import 'package:banking_app2/core/utils/constants.dart';
 import 'package:flutter/material.dart';
 
 class ServicesIconButton extends StatelessWidget {
@@ -30,8 +29,8 @@ class ServicesIconButton extends StatelessWidget {
           color: backgroundColor ?? Colors.white,
           borderRadius: BorderRadius.circular(10),
           border: Border.all(color: Colors.grey, width: .01)),
-      height: height ?? 80,
-      width: width ?? 80,
+      height: height ?? 90,
+      width: width ?? 90,
       child: InkWell(
         onTap: ontap,
         child: Column(
@@ -41,7 +40,7 @@ class ServicesIconButton extends StatelessWidget {
             Icon(
               iconData,
               color: iconColor ?? Colors.indigoAccent,
-              size: 32,
+              size: 35,
             ),
             Text(
               bottomText!,

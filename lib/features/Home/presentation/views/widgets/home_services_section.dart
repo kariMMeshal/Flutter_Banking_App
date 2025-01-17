@@ -21,7 +21,7 @@ class HomeServicesSection extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               ServicesIconButton(
                   iconData: FontAwesomeIcons.wallet,
@@ -41,7 +41,7 @@ class HomeServicesSection extends StatelessWidget {
             ],
           ),
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               ServicesIconButton(
                   iconData: FontAwesomeIcons.solidCreditCard,
@@ -61,7 +61,7 @@ class HomeServicesSection extends StatelessWidget {
             ],
           ),
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
                 ServicesIconButton(
                   iconData: Icons.receipt_long,
