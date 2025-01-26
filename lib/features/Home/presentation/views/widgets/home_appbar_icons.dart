@@ -1,8 +1,8 @@
 
 import 'package:flutter/material.dart';
 
-class AppBarIcons extends StatelessWidget {
-  const AppBarIcons({
+class HomeAppBarIcons extends StatelessWidget {
+  const HomeAppBarIcons({
     super.key,
   });
 

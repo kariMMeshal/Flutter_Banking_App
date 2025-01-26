@@ -6,6 +6,7 @@ import 'package:banking_app2/features/Auth/presentation/views/register_view.dart
 import 'package:banking_app2/features/Home/presentation/views/home_view.dart';
 import 'package:banking_app2/features/OnBoarding/presentation/views/onboarding_view.dart';
 import 'package:banking_app2/features/Splash/presentation/views/splash_view.dart';
+import 'package:banking_app2/features/CreditCards/presentation/views/credit_cards_view.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
@@ -19,6 +20,10 @@ abstract class AppRouter {
       GoRoute(
         path: HomeView.route,
         builder: (context, state) => const HomeView(),
+      ),
+      GoRoute(
+        path: CreditCardsView.route,
+        builder: (context, state) => const CreditCardsView(),
       ),
       GoRoute(
         path: OnBoardingView.route,

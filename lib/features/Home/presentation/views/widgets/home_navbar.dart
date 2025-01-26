@@ -27,8 +27,8 @@ class HomeNavBar extends StatelessWidget {
         NavItem(
           index: 1,
           selectedIndex: selectedIndex,
-          icon: FontAwesomeIcons.wallet,
-          label: 'Wallet',
+          icon: FontAwesomeIcons.solidCreditCard,
+          label: 'Cards',
           onItemTapped: onItemTapped,
         ),
         NavItem(
