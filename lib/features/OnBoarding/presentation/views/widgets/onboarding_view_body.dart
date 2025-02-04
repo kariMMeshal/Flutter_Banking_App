@@ -30,9 +30,9 @@ class OnboardingViewBodyState extends State<OnboardingViewBody> {
     return Column(
       children: [
         OnboardingAppbar(onSkipTap: skipToLastPage),
-        Text("Welcome To ",
+        const Text('Welcome To ',
             style: Styles.ktextStyle20, textAlign: TextAlign.center),
-        Image.asset("assets/images/KWallet.png", height: 40),
+        Image.asset('assets/images/KWallet.png', height: 40),
         Expanded(
           child: PageView(
             controller: controller,
@@ -41,28 +41,28 @@ class OnboardingViewBodyState extends State<OnboardingViewBody> {
                 currentIndex = index;
               });
             },
-            children: [
+            children: const [
               BuildPage(
-                title: "Welcome to KWallet",
-                imgUrl: "assets/images/9462114.jpg",
+                title: 'Welcome to KWallet',
+                imgUrl: 'assets/images/9462114.jpg',
               ),
               BuildPage(
-                title: "Financial Services",
-                imgUrl: "assets/images/2869279.jpg",
+                title: 'Financial Services',
+                imgUrl: 'assets/images/2869279.jpg',
               ),
               BuildPage(
-                title: "Secure Money Transaction",
-                imgUrl: "assets/images/test1.jpg",
+                title: 'Secure Money Transaction',
+                imgUrl: 'assets/images/test1.jpg',
               ),
               BuildPage(
-                title: "Get Started Now",
-                imgUrl: "assets/images/4198074.jpg",
+                title: 'Get Started Now',
+                imgUrl: 'assets/images/4198074.jpg',
               ),
             ],
           ),
         ),
         CustomPageIndicator(controller: controller),
-        SizedBox(height: 6),
+        const SizedBox(height: 6),
         currentIndex == 3
             ? CustomIconButton(
                 iconData: Icons.check,
@@ -73,7 +73,7 @@ class OnboardingViewBodyState extends State<OnboardingViewBody> {
                 ontap: () {
                   controller.animateToPage(
                     currentIndex + 1,
-                    duration: Duration(milliseconds: 200),
+                    duration: const Duration(milliseconds: 200),
                     curve: Curves.easeInOut,
                   );
                 },
@@ -85,13 +85,13 @@ class OnboardingViewBodyState extends State<OnboardingViewBody> {
   void skipToLastPage() {
     controller.animateToPage(
       3,
-      duration: Duration(milliseconds: 250),
+      duration: const Duration(milliseconds: 250),
       curve: Curves.easeInOut,
     );
   }
 
   void getStarted() async {
-    await SharedPrefsHelper.saveBool("ShowHome", true);
+    await SharedPrefsHelper.saveBool('ShowHome', true);
     if (mounted) {
       GoRouter.of(context).push(HomeView.route);
     }

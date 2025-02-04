@@ -23,8 +23,8 @@ class ForgetPassBody extends StatelessWidget {
         if (state is ResetPassSuccess) {
           customDialog(
             context: context,
-            message: "a reset password mail has been sent to you",
-            title: "Reset Password",
+            message: 'a reset password mail has been sent to you',
+            title: 'Reset Password',
             dialogType: DialogType.info,
             btnOkOnPress: () => GoRouter.of(context).go(LoginView.route),
           );
@@ -32,7 +32,7 @@ class ForgetPassBody extends StatelessWidget {
           customDialog(
               context: context,
               message: state.errorMessage,
-              title: "Reset Password",
+              title: 'Reset Password',
               dialogType: DialogType.error);
         }
       },
@@ -41,18 +41,18 @@ class ForgetPassBody extends StatelessWidget {
           inAsyncCall: state is ResetPassLoading,
           child: Column(
             children: [
-              ForgetPassHeading(),
+              const ForgetPassHeading(),
               Container(
                 decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(25),
                     border: Border.all(color: Colors.grey, width: .4)),
-                margin: EdgeInsets.symmetric(horizontal: 30),
-                padding: EdgeInsets.all(20),
+                margin: const EdgeInsets.symmetric(horizontal: 30),
+                padding: const EdgeInsets.all(20),
                 child: Form(
                   key: formKey,
                   child: CustomTextfield(
-                    hint: "user@gmail.com",
+                    hint: 'user@gmail.com',
                     myController: emailController,
                   ),
                 ),
@@ -64,7 +64,7 @@ class ForgetPassBody extends StatelessWidget {
                         email: emailController.text.trim().toLowerCase()));
                   }
                 },
-                title: "Send",
+                title: 'Send',
                 backgroundColor: kPurple,
                 width: MediaQuery.of(context).size.width * .8,
               ),

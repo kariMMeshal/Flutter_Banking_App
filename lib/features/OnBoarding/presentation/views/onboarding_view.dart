@@ -7,7 +7,7 @@ class OnBoardingView extends StatelessWidget {
   static String route = '/onboardingView';
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
+    return const SafeArea(
       child: Scaffold(
         backgroundColor: klightBackground,
         body: OnboardingViewBody(),

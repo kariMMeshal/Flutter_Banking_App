@@ -1,8 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 
 abstract class Failures {
-  final String errorMessage;
   const Failures(this.errorMessage);
+  final String errorMessage;
 }
 
 class AuthFailures extends Failures {

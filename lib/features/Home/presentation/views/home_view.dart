@@ -8,7 +8,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
-  static const String route = "/homeView";
+  static const String route = '/homeView';
 
   @override
   Widget build(BuildContext context) {

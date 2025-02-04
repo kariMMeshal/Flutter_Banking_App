@@ -6,7 +6,7 @@ class LoginView extends StatelessWidget {
   static String route = '/loginView';
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
+    return const SafeArea(
       child: Scaffold(
         backgroundColor: Color(0xfffbfbfb),
         body: LoginViewBody(),

@@ -5,10 +5,10 @@ import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class AuthRepoImpl implements AuthRepo {
-  final FirebaseAuth _firebaseAuth;
 
   AuthRepoImpl({required FirebaseAuth firebaseAuth})
       : _firebaseAuth = firebaseAuth;
+  final FirebaseAuth _firebaseAuth;
 
   @override
   Future<Either<Failures, User>> createAccount({
@@ -89,7 +89,7 @@ class AuthRepoImpl implements AuthRepo {
           await FirebaseAuth.instance.fetchSignInMethodsForEmail(emailAddress);
 
       if (signInMethods.isEmpty) {
-        return Left(AuthFailures('No user found with this email address.'));
+        return const Left(AuthFailures('No user found with this email address.'));
       }
 
       await FirebaseAuth.instance.sendPasswordResetEmail(email: emailAddress);

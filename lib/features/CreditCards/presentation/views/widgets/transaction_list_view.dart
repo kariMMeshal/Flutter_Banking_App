@@ -12,7 +12,7 @@ class TransactionListView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: ListView.builder(
-        physics: BouncingScrollPhysics(),
+        physics: const BouncingScrollPhysics(),
         itemCount: customTransaction.length,
         itemBuilder: (context, index) {
           var item = customTransaction[index];
@@ -25,14 +25,22 @@ class TransactionListView extends StatelessWidget {
               side: BorderSide(color: Colors.grey.shade50),
             ),
             child: ListTile(
-              leading: Icon(
-                item['icon'],
-                color: Colors.green.shade700,
+              leading: Container(
+                width: 40,
+                height: 40,
+                decoration: BoxDecoration(
+                    color: Colors.grey.shade300,
+                    borderRadius: BorderRadius.circular(20)),
+                child: Icon(
+                  item['icon'],
+                  color: Colors.black,
+                  size: 18,
+                ),
               ),
               contentPadding: const EdgeInsets.all(10),
-              title: Text("${item["title"]}", style: Styles.ktextStyle18),
+              title: Text("${item["title"]}", style: Styles.ktextStyle16),
               subtitle: Text("${item["date"]}",
-                  style: Styles.ktextStyle12.copyWith(color: kborder)),
+                  style: Styles.ktextStyle10.copyWith(color: kborder)),
               trailing: Text("\$ ${item["price"].toString()}",
                   style: Styles.ktextStyle12
                       .copyWith(color: Colors.blue.shade900)),

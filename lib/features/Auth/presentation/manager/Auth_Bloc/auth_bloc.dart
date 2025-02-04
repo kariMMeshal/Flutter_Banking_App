@@ -5,8 +5,7 @@ import 'package:meta/meta.dart';
 part 'auth_event.dart';
 part 'auth_state.dart';
 
-class AuthBloc extends Bloc<AuthEvent, AuthState> {
-  final AuthRepo _authRepo; // Injecting AuthRepo (AuthRepoImpl)
+class AuthBloc extends Bloc<AuthEvent, AuthState> { // Injecting AuthRepo (AuthRepoImpl)
 
   AuthBloc(this._authRepo) : super(AuthInitial()) {
     on<AuthEvent>((event, emit) async {
@@ -71,4 +70,5 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       }
     });
   }
+  final AuthRepo _authRepo;
 }

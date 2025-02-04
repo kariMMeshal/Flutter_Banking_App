@@ -31,10 +31,10 @@ class _RegisterBottomSheetState extends State<RegisterBottomSheet> {
             RichText(
                 text: TextSpan(children: [
               TextSpan(
-                  text: "Please agree to the ",
+                  text: 'Please agree to the ',
                   style: Styles.ktextStyle14.copyWith(color: Colors.black)),
               TextSpan(
-                  text: "Terms&Conditions ",
+                  text: 'Terms&Conditions ',
                   style: Styles.ktextStyle14
                       .copyWith(color: kPurple, fontWeight: FontWeight.bold)),
             ]))
@@ -46,13 +46,13 @@ class _RegisterBottomSheetState extends State<RegisterBottomSheet> {
             CustomIconButton(
               ontap: () => widget.onbacktap(),
               iconData: Icons.arrow_back,
-              backgroundColor: Color(0xffebd7f8),
+              backgroundColor: const Color(0xffebd7f8),
               iconColor: kPurple,
             ),
             CustomButton(
               onPressed: () => widget.onRegistertap(),
-              title: "Register",
-              backgroundColor: Color(0xff6d05be),
+              title: 'Register',
+              backgroundColor: const Color(0xff6d05be),
               width: MediaQuery.of(context).size.width * .75,
             ),
           ],

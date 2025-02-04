@@ -15,11 +15,11 @@ class RegisterHeading extends StatelessWidget {
       child: Column(
         spacing: 10,
         children: [
-          Text("Welcome To", style: Styles.ktextStyle16),
-          Image.asset("assets/images/KWallet.png", height: 40),
-          Text("Create Account", style: Styles.ktextStyle20),
+          const Text('Welcome To', style: Styles.ktextStyle16),
+          Image.asset('assets/images/KWallet.png', height: 40),
+          const Text('Create Account', style: Styles.ktextStyle20),
           Text(
-            "Your phone has been registered\nEnter the below details to continue",
+            'Your phone has been registered\nEnter the below details to continue',
             style: Styles.ktextStyle16.copyWith(color: Colors.grey),
             textAlign: TextAlign.center,
           ),

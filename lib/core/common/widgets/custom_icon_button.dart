@@ -2,11 +2,6 @@ import 'package:banking_app2/core/utils/constants.dart';
 import 'package:flutter/material.dart';
 
 class CustomIconButton extends StatelessWidget {
-  final double? height;
-  final double? width;
-  final Color? backgroundColor;
-  final Color? iconColor;
-  final VoidCallback ontap;
 
   const CustomIconButton({
     super.key,
@@ -15,8 +10,14 @@ class CustomIconButton extends StatelessWidget {
     this.width,
     this.backgroundColor,
     this.iconColor,
-    required this.ontap,
+    required this.ontap, this.iconSize,
   });
+  final double? height;
+  final double? width;
+  final double? iconSize;
+  final Color? backgroundColor;
+  final Color? iconColor;
+  final VoidCallback ontap;
 
   final IconData iconData;
 
@@ -29,10 +30,10 @@ class CustomIconButton extends StatelessWidget {
           color: backgroundColor ?? kPurple,
           borderRadius: BorderRadius.circular(20),
         ),
-        margin: EdgeInsets.symmetric(vertical: 20),
+        margin: const EdgeInsets.symmetric(vertical: 20),
         height: height ?? 60,
         width: width ?? 60,
-        child: Icon(iconData, color: iconColor ?? Colors.white),
+        child: Icon(iconData, color: iconColor ?? Colors.white , size: iconSize,),
       ),
     );
   }

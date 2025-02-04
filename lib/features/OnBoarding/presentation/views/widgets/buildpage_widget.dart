@@ -23,7 +23,7 @@ class BuildPage extends StatelessWidget {
             child: Image.asset(imgUrl)),
         Text(title, style: Styles.ktextStyle24),
         Text(
-          subTitle ?? "",
+          subTitle ?? '',
           style: Styles.ktextStyle14
               .copyWith(color: Colors.black.withValues(alpha: 0.5)),
         )

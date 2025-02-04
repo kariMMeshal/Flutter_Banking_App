@@ -13,13 +13,13 @@ class CreditCardSlider extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         itemCount: 3,
         itemBuilder: (context, index) {
-          return Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20.0),
+          return const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20.0),
             child: CustomCreditCard(
-              cardHolderName: "kareem hamdy mohamed",
-              cardNumber: "1234567892062131",
-              expiryDate: "20/27",
-              cardType: EgyptianCreditCardType.AlexBank,
+              cardHolderName: 'kareem hamdy mohamed',
+              cardNumber: '1234567891234567',
+              expiryDate: '20/27',
+              cardType: EgyptianCreditCardType.Visa,
             ),
           );
         },

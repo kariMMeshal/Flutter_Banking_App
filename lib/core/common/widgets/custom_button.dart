@@ -3,12 +3,6 @@ import 'package:banking_app2/core/utils/constants.dart';
 import 'package:flutter/material.dart';
 
 class CustomButton extends StatelessWidget {
-  final void Function() onPressed;
-  final String title;
-  final double? height;
-  final double? width;
-  final Color? backgroundColor;
-  final Color? textColor;
   const CustomButton({
     super.key,
     required this.title,
@@ -18,6 +12,12 @@ class CustomButton extends StatelessWidget {
     this.backgroundColor,
     this.textColor,
   });
+  final void Function() onPressed;
+  final String title;
+  final double? height;
+  final double? width;
+  final Color? backgroundColor;
+  final Color? textColor;
 
   @override
   Widget build(BuildContext context) {

@@ -8,14 +8,14 @@ class WalletInitial extends WalletState {}
 class WalletLoading extends WalletState {}
 
 class WalletUpdated extends WalletState {
-  final num remainingAmount;
-  final num totalSalary;
 
   WalletUpdated({required this.totalSalary, required this.remainingAmount});
+  final num remainingAmount;
+  final num totalSalary;
 }
 
 class WalletError extends WalletState {
-  final String message;
 
   WalletError({required this.message});
+  final String message;
 }

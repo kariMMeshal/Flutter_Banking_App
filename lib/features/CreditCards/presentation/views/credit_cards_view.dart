@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 
 class CreditCardsView extends StatelessWidget {
   const CreditCardsView({super.key});
-  static final String route = '/walletView';
+  static const String route = '/walletView';
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
+    return const SafeArea(
         child: Scaffold(
       body: CreditCardsViewBody(),
     ));

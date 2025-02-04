@@ -13,10 +13,10 @@ class CustomPageIndicator extends StatelessWidget {
   Widget build(BuildContext context) {
     return SmoothPageIndicator(
       onDotClicked: (index) => controller.animateToPage(index,
-          duration: Duration(milliseconds: 400), curve: Curves.easeInOut),
+          duration: const Duration(milliseconds: 400), curve: Curves.easeInOut),
       controller: controller,
       count: 4,
-      effect: ExpandingDotsEffect(
+      effect: const ExpandingDotsEffect(
         activeDotColor: Colors.deepPurple,
         dotColor: Colors.grey,
         dotHeight: 10,

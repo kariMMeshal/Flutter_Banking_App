@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
 class SalaryProgressIndicator extends StatelessWidget {
-  final num totalSalary;
-  final num remainingSalary;
 
   const SalaryProgressIndicator({
     super.key,
     required this.totalSalary,
     required this.remainingSalary,
   });
+  final num totalSalary;
+  final num remainingSalary;
 
   @override
   Widget build(BuildContext context) {
@@ -29,11 +29,11 @@ class SalaryProgressIndicator extends StatelessWidget {
         }
         return CircularPercentIndicator(
           progressColor: Color.lerp(
-            Color.lerp(Colors.red.shade800, Colors.yellow.shade600, value)!,
-            Color.lerp(Colors.yellow.shade600, Colors.green.shade600, value)!,
+            Color.lerp(Colors.red.shade800, Colors.yellow.shade600, value),
+            Color.lerp(Colors.yellow.shade600, Colors.green.shade600, value),
             value,
-          )!,
-          radius: 100,
+          ),
+          radius: 90,
           lineWidth: 10,
           percent: value,
           backgroundColor: Colors.grey[200]!,
@@ -43,17 +43,17 @@ class SalaryProgressIndicator extends StatelessWidget {
             children: [
               Text(
                 '\$${(value * totalSalary).toStringAsFixed(2)}',
-                style: Styles.ktextStyle24,
+                style: Styles.ktextStyle20,
               ),
               Text(
                 'of \$${totalSalary.toStringAsFixed(2)}',
-                style: Styles.ktextStyle16.copyWith(color: Colors.grey),
+                style: Styles.ktextStyle14.copyWith(color: Colors.grey),
               ),
               Text(
                 isExceeded
                     ? '+ \$${(remainingSalary - totalSalary).toStringAsFixed(2)}'
-                    : "",
-                style: Styles.ktextStyle16.copyWith(color: Colors.green),
+                    : '',
+                style: Styles.ktextStyle12.copyWith(color: Colors.green),
               ),
             ],
           ),

@@ -14,17 +14,17 @@ class OnboardingAppbar extends StatelessWidget {
         children: [
           InkWell(
             onTap: () {},
-            child: Row(
+            child: const Row(
               children: [
                 Icon(Icons.language, size: 28),
-                Text(" English ", style: Styles.ktextStyle16),
+                Text(' English ', style: Styles.ktextStyle16),
               ],
             ),
           ),
           TextButton(
               onPressed: () => onSkipTap(),
-              child: Text(
-                "Skip",
+              child: const Text(
+                'Skip',
                 style: Styles.ktextStyle18,
               ))
         ],

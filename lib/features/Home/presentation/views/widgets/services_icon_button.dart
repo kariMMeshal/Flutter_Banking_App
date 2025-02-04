@@ -2,12 +2,6 @@ import 'package:banking_app2/core/common/styles/styles.dart';
 import 'package:flutter/material.dart';
 
 class ServicesIconButton extends StatelessWidget {
-  final double? height;
-  final double? width;
-  final Color? backgroundColor;
-  final Color? iconColor;
-  final VoidCallback ontap;
-  final String? bottomText;
 
   const ServicesIconButton({
     super.key,
@@ -19,6 +13,12 @@ class ServicesIconButton extends StatelessWidget {
     required this.ontap,
     this.bottomText = '',
   });
+  final double? height;
+  final double? width;
+  final Color? backgroundColor;
+  final Color? iconColor;
+  final VoidCallback ontap;
+  final String? bottomText;
 
   final IconData iconData;
 

@@ -40,8 +40,8 @@ class RegisterViewBody extends StatelessWidget {
           customDialog(
             context: context,
             message:
-                "Welcome ${state.userName}\n your account is successfuly created kindly check your mail and verify it then Sign in",
-            title: "Success",
+                'Welcome ${state.userName}\n your account is successfuly created kindly check your mail and verify it then Sign in',
+            title: 'Success',
             dialogType: DialogType.success,
             btnOkOnPress: () =>
                 GoRouter.of(context).pushReplacement(LoginView.route),
@@ -50,7 +50,7 @@ class RegisterViewBody extends StatelessWidget {
           customDialog(
               context: context,
               message: state.errorMessage,
-              title: "Error",
+              title: 'Error',
               dialogType: DialogType.error);
         }
       },
@@ -60,60 +60,60 @@ class RegisterViewBody extends StatelessWidget {
           child: ListView(
             physics: const BouncingScrollPhysics(),
             children: [
-              RegisterHeading(),
+              const RegisterHeading(),
               Container(
                 decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(25),
                     border: Border.all(color: kborder, width: .5)),
-                margin: EdgeInsets.symmetric(horizontal: 30),
-                padding: EdgeInsets.all(20),
+                margin: const EdgeInsets.symmetric(horizontal: 30),
+                padding: const EdgeInsets.all(20),
                 child: Form(
                   key: formKey,
                   child: Column(
                     spacing: 8.5,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text("Name", style: Styles.ktextStyle16),
+                      const Text('Name', style: Styles.ktextStyle16),
                       CustomTextfield(
                           validator: Validator.validateName,
-                          hint: "Enter your Full name",
+                          hint: 'Enter your Full name',
                           myController: userNameController),
-                      Text("Birth Date", style: Styles.ktextStyle16),
+                      const Text('Birth Date', style: Styles.ktextStyle16),
                       CustomTextfield(
                         validator: Validator.validateBirthDate,
-                        hint: "YYYY-MM-DD",
+                        hint: 'YYYY-MM-DD',
                         myController: birthDateController,
                         isDatePicker: true,
                       ),
-                      Text("Email", style: Styles.ktextStyle16),
+                      const Text('Email', style: Styles.ktextStyle16),
                       CustomTextfield(
                           validator: Validator.validateEmail,
-                          hint: "user@email.com",
+                          hint: 'user@email.com',
                           myController: emailController),
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                       ChooseGenderField(
                           onValidated: (isValid) => isGenderValid = isValid),
-                      Text("City", style: Styles.ktextStyle16),
+                      const Text('City', style: Styles.ktextStyle16),
                       ChooseCityField(onChanged: (city) => mycity = city),
-                      Text("Phone Number", style: Styles.ktextStyle16),
+                      const Text('Phone Number', style: Styles.ktextStyle16),
                       CustomTextfield(
                         validator: Validator.validatePhoneNumber,
-                        hint: "015........",
+                        hint: '015........',
                         myController: phoneNumController,
                         inputType: TextInputType.phone,
                       ),
-                      Text("Current Salary", style: Styles.ktextStyle16),
+                      const Text('Current Salary', style: Styles.ktextStyle16),
                       CustomTextfield(
                         validator: Validator.validateSalary,
                         inputType: TextInputType.phone,
-                        hint: "\$5000...",
+                        hint: '\$5000...',
                         myController: salaryController,
                       ),
-                      Text("Password", style: Styles.ktextStyle16),
+                      const Text('Password', style: Styles.ktextStyle16),
                       CustomTextfield(
                         validator: Validator.validatePassword,
-                        hint: "Password",
+                        hint: 'Password',
                         myController: passwordController,
                         isHidden: true,
                       ),
@@ -121,16 +121,16 @@ class RegisterViewBody extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(height: 5),
+              const SizedBox(height: 5),
               InkWell(
                 onTap: () => GoRouter.of(context).go(LoginView.route),
                 child: Text(
                   textAlign: TextAlign.left,
-                  "   Already Have An Account ? ",
+                  '   Already Have An Account ? ',
                   style: Styles.ktextStyle16.copyWith(color: kPurple),
                 ),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               RegisterBottomSheet(
                   onbacktap: () =>
                       GoRouter.of(context).go(OnBoardingView.route),
@@ -169,7 +169,7 @@ class RegisterViewBody extends StatelessWidget {
       if (!isGenderValid) {
         customSnackBar(
           context,
-          title: " Please Choose Your Gender",
+          title: ' Please Choose Your Gender',
         );
       } else {
         final num usersalary = num.parse(salaryController.text.trim());

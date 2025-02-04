@@ -5,11 +5,6 @@ import 'package:flutter/material.dart';
 
 /// Widget for individual navigation items
 class NavItem extends StatelessWidget {
-  final int index;
-  final int selectedIndex;
-  final IconData icon;
-  final String label;
-  final Function(int) onItemTapped;
 
   const NavItem({
     super.key,
@@ -19,6 +14,11 @@ class NavItem extends StatelessWidget {
     required this.label,
     required this.onItemTapped,
   });
+  final int index;
+  final int selectedIndex;
+  final IconData icon;
+  final String label;
+  final Function(int) onItemTapped;
 
   @override
   Widget build(BuildContext context) {

@@ -78,7 +78,7 @@ class SplashViewBodyState extends State<SplashViewBody> {
               height: _dimension,
               duration: const Duration(milliseconds: 800),
               curve: Curves.easeInOut,
-              child: Image.asset("assets/images/money.png"),
+              child: Image.asset('assets/images/money.png'),
             ),
           ),
           Positioned(
@@ -88,7 +88,7 @@ class SplashViewBodyState extends State<SplashViewBody> {
             child: Center(
               child: SizedBox(
                 height: 30,
-                child: Image.asset("assets/images/KWallet.png"),
+                child: Image.asset('assets/images/KWallet.png'),
               ),
             ),
           ),

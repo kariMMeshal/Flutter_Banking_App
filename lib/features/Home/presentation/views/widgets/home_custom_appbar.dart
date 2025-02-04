@@ -11,12 +11,12 @@ class HomeCustomAppbar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final user = locator.get<FirebaseAuth>().currentUser;
-    final displayName = user?.displayName ?? "User";
+    final displayName = user?.displayName ?? 'User';
     return Stack(
       children: [
         Container(
-          padding: EdgeInsets.all(8),
-          decoration: BoxDecoration(
+          padding: const EdgeInsets.all(8),
+          decoration: const BoxDecoration(
             gradient: LinearGradient(
               colors: kShadedBlue,
               begin: Alignment.topLeft,
@@ -30,25 +30,25 @@ class HomeCustomAppbar extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              HomeAppBarIcons(),
+              const HomeAppBarIcons(),
               Text(
-                "Welcome Back",
+                'Welcome Back',
                 style: Styles.ktextStyle18.copyWith(color: Colors.white),
               ),
               Text(
                 displayName,
                 style: Styles.ktextStyle20.copyWith(color: Colors.white),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               Text(
-                "Current Balance : ",
+                'Current Balance : ',
                 style: Styles.ktextStyle18.copyWith(color: Colors.white),
               ),
               Text(
-                "\$${currentBalance.toStringAsFixed(2)}",
+                '\$${currentBalance.toStringAsFixed(2)}',
                 style: Styles.ktextStyle24.copyWith(color: Colors.white),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
             ],
           ),
         ),
@@ -57,7 +57,7 @@ class HomeCustomAppbar extends StatelessWidget {
           top: 50,
           child: SizedBox(
             height: 150,
-            child: Image.asset("assets/images/lot-money-icon.png"),
+            child: Image.asset('assets/images/lot-money-icon.png'),
           ),
         ),
       ],

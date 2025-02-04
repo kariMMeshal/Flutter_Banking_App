@@ -1,11 +1,8 @@
-import 'package:banking_app2/core/utils/constants.dart';
+import 'package:banking_app2/features/CreditCards/data/credit_card_designs.dart';
 import 'package:banking_app2/features/CreditCards/data/credit_cards_types.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
 class CustomCreditCard extends StatelessWidget {
-  final String cardHolderName, cardNumber, expiryDate;
-  final EgyptianCreditCardType cardType;
 
   const CustomCreditCard({
     super.key,
@@ -14,16 +11,30 @@ class CustomCreditCard extends StatelessWidget {
     required this.expiryDate,
     required this.cardType,
   });
+  final String cardHolderName, cardNumber, expiryDate;
+  final EgyptianCreditCardType cardType;
 
   @override
   Widget build(BuildContext context) {
+    // Fetch the design for the current card type
+    final design = creditCardDesigns[cardType] ?? CreditCardDesigns(
+      gradientColors: [Colors.grey, Colors.black], // Default design
+      displayText: 'Default',
+      textStyle: GoogleFonts.roboto(
+        fontSize: 24,
+        fontWeight: FontWeight.bold,
+        color: Colors.white,
+      ),
+      icon: Icons.credit_card,
+    );
+
     return Card(
       elevation: 8,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       child: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
-            colors: kShadedBlue,
+            colors: design.gradientColors,
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
           ),
@@ -34,10 +45,10 @@ class CustomCreditCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
           children: [
-            _buildHeader(),
+            _buildHeader(design),
             const SizedBox(height: 16),
             _buildCardNumber(),
-            const SizedBox(height: 16),
+            const SizedBox(height: 24),
             _buildFooter(),
           ],
         ),
@@ -45,19 +56,15 @@ class CustomCreditCard extends StatelessWidget {
     );
   }
 
-  Widget _buildHeader() {
+  Widget _buildHeader(CreditCardDesigns design) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Text(
-          cardType.toString().split('.').last,
-          style: GoogleFonts.montserrat(
-            color: Colors.white,
-            fontSize: 18,
-            fontWeight: FontWeight.bold,
-          ),
+          design.displayText,
+          style: design.textStyle,
         ),
-        const Icon(Icons.credit_card, color: Colors.white, size: 28),
+        Icon(design.icon, color: Colors.white, size: 28),
       ],
     );
   }
@@ -69,7 +76,7 @@ class CustomCreditCard extends StatelessWidget {
       style: GoogleFonts.robotoMono(
         color: Colors.white,
         fontSize: 20,
-        letterSpacing: 2.0,
+        letterSpacing: 1.5,
       ),
     );
   }
@@ -96,7 +103,7 @@ class CustomCreditCard extends StatelessWidget {
           value,
           style: GoogleFonts.montserrat(
             color: Colors.white,
-            fontSize: 16,
+            fontSize: 12,
             fontWeight: FontWeight.bold,
           ),
         ),

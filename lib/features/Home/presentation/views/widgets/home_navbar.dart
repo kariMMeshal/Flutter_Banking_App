@@ -4,14 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class HomeNavBar extends StatelessWidget {
-  final int selectedIndex;
-  final Function(int) onItemTapped;
 
   const HomeNavBar({
     super.key,
     required this.selectedIndex,
     required this.onItemTapped,
   });
+  final int selectedIndex;
+  final Function(int) onItemTapped;
 
   @override
   Widget build(BuildContext context) {

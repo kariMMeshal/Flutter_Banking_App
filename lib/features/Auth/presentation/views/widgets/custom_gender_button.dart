@@ -3,10 +3,6 @@ import 'package:banking_app2/core/utils/constants.dart';
 import 'package:flutter/material.dart';
 
 class CustomGenderButton extends StatelessWidget {
-  final void Function()? onPressed;
-  final String title;
-  final bool isSelected;
-  final IconData iconData;
   const CustomGenderButton({
     super.key,
     required this.title,
@@ -14,6 +10,10 @@ class CustomGenderButton extends StatelessWidget {
     required this.iconData,
     this.isSelected = false,
   });
+  final void Function()? onPressed;
+  final String title;
+  final bool isSelected;
+  final IconData iconData;
 
   @override
   Widget build(BuildContext context) {

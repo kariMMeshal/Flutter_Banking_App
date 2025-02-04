@@ -29,7 +29,7 @@ class LoginViewBody extends StatelessWidget {
           customDialog(
             context: context,
             message: "Welcome ${state.userName} you're successfuly logged in ",
-            title: "Success",
+            title: 'Success',
             dialogType: DialogType.success,
             btnOkOnPress: () =>
                 GoRouter.of(context).pushReplacement(HomeView.route),
@@ -38,7 +38,7 @@ class LoginViewBody extends StatelessWidget {
           customDialog(
               context: context,
               message: state.errorMessage,
-              title: "Error",
+              title: 'Error',
               dialogType: DialogType.error);
         }
       },
@@ -47,35 +47,35 @@ class LoginViewBody extends StatelessWidget {
           inAsyncCall: state is LoginLoading,
           child: Column(
             children: [
-              LoginViewHeading(),
+              const LoginViewHeading(),
               Container(
                 decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(25),
                     border: Border.all(color: Colors.grey, width: .4)),
-                margin: EdgeInsets.symmetric(horizontal: 30),
-                padding: EdgeInsets.all(20),
+                margin: const EdgeInsets.symmetric(horizontal: 30),
+                padding: const EdgeInsets.all(20),
                 child: Form(
                   key: formKey,
                   child: Column(
                     spacing: 8.5,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Text("Email", style: Styles.ktextStyle16),
+                      const Text('Email', style: Styles.ktextStyle16),
                       CustomTextfield(
-                          hint: "user@email.com",
+                          hint: 'user@email.com',
                           myController: emailController),
-                      const Text("Password", style: Styles.ktextStyle16),
+                      const Text('Password', style: Styles.ktextStyle16),
                       CustomTextfield(
-                        hint: "Password",
+                        hint: 'Password',
                         myController: passwordController,
                         isHidden: true,
                       ),
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                       InkWell(
                         onTap: () =>
                             GoRouter.of(context).go(ForgetPasswordView.route),
-                        child: Text("Forgort Password ? ",
+                        child: Text('Forgort Password ? ',
                             style:
                                 Styles.ktextStyle14.copyWith(color: kPurple)),
                       ),
@@ -88,10 +88,10 @@ class LoginViewBody extends StatelessWidget {
                 children: [
                   InkWell(
                     onTap: () => GoRouter.of(context).go(RegisterView.route),
-                    child: Text("Dont have an account ? ",
+                    child: Text('Dont have an account ? ',
                         style: Styles.ktextStyle14.copyWith(color: kPurple)),
                   ),
-                  SizedBox(height: 30),
+                  const SizedBox(height: 30),
                   CustomButton(
                     onPressed: () {
                       if (formKey.currentState!.validate()) {
@@ -100,7 +100,7 @@ class LoginViewBody extends StatelessWidget {
                             password: passwordController.text));
                       }
                     },
-                    title: "Login",
+                    title: 'Login',
                     backgroundColor: kPurple,
                     width: MediaQuery.of(context).size.width * .8,
                   ),

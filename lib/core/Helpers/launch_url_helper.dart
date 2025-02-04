@@ -8,9 +8,9 @@ Future<void> launchUrlHelper(context, {required String url}) async {
     if (await canLaunchUrl(uri)) {
       await launchUrl(uri);
     } else {
-      customSnackBar(context, title: "Invalid URL: $url");
+      customSnackBar(context, title: 'Invalid URL: $url');
     }
   } catch (e) {
-    customSnackBar(context, title: "Cannot launch $url");
+    customSnackBar(context, title: 'Cannot launch $url');
   }
 }

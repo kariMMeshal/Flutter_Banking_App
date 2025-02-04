@@ -11,11 +11,11 @@ class ForgetPassHeading extends StatelessWidget {
       child: Column(
         spacing: 10,
         children: [
-          Text("Welcome To", style: Styles.ktextStyle16),
-          Image.asset("assets/images/KWallet.png", height: 40),
-          Text("Sign in", style: Styles.ktextStyle20),
+          const Text('Welcome To', style: Styles.ktextStyle16),
+          Image.asset('assets/images/KWallet.png', height: 40),
+          const Text('Sign in', style: Styles.ktextStyle20),
           Text(
-            "Enter Your mail",
+            'Enter Your mail',
             style: Styles.ktextStyle16.copyWith(color: Colors.grey),
             textAlign: TextAlign.center,
           ),

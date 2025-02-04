@@ -1,3 +1,4 @@
+import 'package:banking_app2/features/CreditCards/data/credit_cards_types.dart';
 import 'package:intl/intl.dart';
 
 class Validator {
@@ -91,6 +92,74 @@ class Validator {
   static String? validateGender(bool? isGenderValid) {
     if (isGenderValid == null || !isGenderValid) {
       return 'Gender is required';
+    }
+    return null;
+  }
+
+  // Validate card holder name
+  static String? validateCardHolderName(String? value) {
+    if (value == null || value.isEmpty) {
+      return 'Card holder name is required';
+    }
+    final nameRegex = RegExp(r'^[a-zA-Z\s]+$');
+    if (!nameRegex.hasMatch(value)) {
+      return 'Enter a valid card holder name';
+    }
+    return null;
+  }
+
+  // Validate card number
+  static String? validateCardNumber(String? value) {
+    if (value == null || value.isEmpty || value.length != 16) {
+      return 'Card number is required';
+    }
+    final cardNumberRegex = RegExp(r'^\d{16}$');
+    if (!cardNumberRegex.hasMatch(value)) {
+      return 'Enter a valid 16-digit card number';
+    }
+    return null;
+  }
+
+  // Validate expiry date
+  static String? validateExpiryDate(String? value) {
+    if (value == null || value.isEmpty) {
+      return 'Expiry date is required';
+    }
+    final expiryDateRegex = RegExp(r'^(0[1-9]|1[0-2])\/?([0-9]{2})$');
+    if (!expiryDateRegex.hasMatch(value)) {
+      return 'Enter a valid expiry date (MM/YY)';
+    }
+
+    // Check if the card is expired
+    final now = DateTime.now();
+    final month = int.parse(value.substring(0, 2));
+    final year = int.parse('20${value.substring(3)}');
+    final expiryDate =
+        DateTime(year, month + 1, 0); // Last day of the expiry month
+
+    if (expiryDate.isBefore(now)) {
+      return 'Card is expired';
+    }
+
+    return null;
+  }
+
+  // Validate CVV
+  static String? validateCVV(String? value) {
+    if (value == null || value.isEmpty || value.length != 3) {
+      return 'CVV is required';
+    }
+    final cvvRegex = RegExp(r'^\d{3,4}$');
+    if (!cvvRegex.hasMatch(value)) {
+      return 'Enter a valid CVV (3 or 4 digits)';
+    }
+    return null;
+  }
+
+  // Validate card type
+  static String? validateCardType(EgyptianCreditCardType? value) {
+    if (value == null) {
+      return 'Card type is required';
     }
     return null;
   }

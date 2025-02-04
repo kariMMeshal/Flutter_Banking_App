@@ -20,7 +20,7 @@ Future<dynamic> customDialog({
     desc: message,
     btnCancelOnPress: btnCancelOnPress,
     btnOkOnPress: btnOkOnPress,
-    btnOkText: btnOkText ?? "Okay",
-    btnCancelText: btnCancelText ?? "Cancel",
+    btnOkText: btnOkText ?? 'Okay',
+    btnCancelText: btnCancelText ?? 'Cancel',
   ).show();
 }
