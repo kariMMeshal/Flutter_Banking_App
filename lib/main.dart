@@ -1,6 +1,7 @@
 import 'package:banking_app2/core/utils/app_router.dart';
 import 'package:banking_app2/core/utils/constants.dart';
 import 'package:banking_app2/core/utils/dependency_injection.dart';
+import 'package:banking_app2/features/CreditCards/presentation/manager/CreditCards-bloc/creditcards_bloc.dart';
 import 'package:banking_app2/features/Home/presentation/manager/BottomNav_Cubit/bottom_nav_cubit.dart';
 import 'package:banking_app2/features/Home/presentation/manager/Wallet_Cubit/wallet_cubit.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -33,6 +34,9 @@ class BankingApp extends StatelessWidget {
           create: (context) => locator.get<WalletCubit>()..fetchSalary(),
         ),
         BlocProvider(create: (context) => BottomNavCubit()),
+        BlocProvider(
+          create: (context) => locator.get<CreditcardsBloc>(),
+        )
       ],
       child: MaterialApp.router(
         routerConfig: AppRouter.router,

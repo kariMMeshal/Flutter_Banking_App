@@ -21,7 +21,7 @@ linter:
     # - prefer_single_quotes # Enforce single quotes for consistency
     - always_use_package_imports # Prevent relative imports
     - prefer_final_fields # Use `final` for class fields if they are not reassigned
-    - sort_constructors_first # Keep constructor at the top in a class
+    # - sort_constructors_first # Keep constructor at the top in a class
     - avoid_unnecessary_containers # Prevent unnecessary `Container` widgets
     - avoid_unused_constructor_parameters # Warn about unused parameters in constructors
     - prefer_interpolation_to_compose_strings # Use `'$var'` instead of `+` for strings

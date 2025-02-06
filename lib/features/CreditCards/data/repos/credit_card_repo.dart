@@ -6,5 +6,5 @@ abstract class CreditCardRepo {
   Future<Either<Failures, void>> saveCard(CreditCardModel card);
   Future<Either<Failures, void>> deleteCard(String cardId);
   Future<Either<Failures, List<CreditCardModel>>> loadCards();
-  Future<Either<Failures, Map<String, String?>>> getEncryptedCardData(String cardId);
+  Future<Either<Failures, Map<String, String?>>> loadEncryptedCardData(String cardId);
 }

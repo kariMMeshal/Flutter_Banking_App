@@ -1,10 +1,11 @@
 part of 'creditcards_bloc.dart';
 
-
 @immutable
 sealed class CreditcardsState {}
 
 final class CreditcardsInitialState extends CreditcardsState {}
+
+final class CreditcardsLoadingState extends CreditcardsState {}
 
 final class CardsLoadedState extends CreditcardsState {
   CardsLoadedState({required this.cards});
@@ -19,6 +20,12 @@ final class CardSavedState extends CreditcardsState {
 final class CardDeletedState extends CreditcardsState {
   CardDeletedState({required this.cardId});
   final String cardId;
+}
+
+final class EncryptedCardDataLoadedState extends CreditcardsState {
+  final Map<String, String?> encryptedData;
+
+  EncryptedCardDataLoadedState({required this.encryptedData});
 }
 
 final class ErrorState extends CreditcardsState {

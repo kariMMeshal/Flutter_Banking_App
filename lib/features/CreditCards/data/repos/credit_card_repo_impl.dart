@@ -52,7 +52,7 @@ class CreditCardRepoImpl implements CreditCardRepo {
   }
 
   @override
-  Future<Either<Failures, Map<String, String?>>> getEncryptedCardData(
+  Future<Either<Failures, Map<String, String?>>> loadEncryptedCardData(
       String cardId) async {
     try {
       final encryptedFirst12 = await SecureStorageHelper.getEncryptedData(
