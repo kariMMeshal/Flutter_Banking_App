@@ -5,10 +5,11 @@ abstract class Failures {
   final String errorMessage;
 }
 
+// Authentication Failures
 class AuthFailures extends Failures {
   const AuthFailures(super.errorMessage);
 
-  // Sign in Failures
+  // Sign-in Failures
   factory AuthFailures.forSignIn(FirebaseAuthException exception) {
     String errorMessage;
 
@@ -29,13 +30,14 @@ class AuthFailures extends Failures {
         errorMessage = 'Too many attempts. Please try again later.';
         break;
       default:
-        errorMessage = 'Invalid Credintial (email or Password)\n Please try again.';
+        errorMessage =
+            'Invalid Credential (email or password). Please try again.';
     }
 
     return AuthFailures(errorMessage);
   }
 
-  /// Registration exceptions
+  // Registration Failures
   factory AuthFailures.forRegister(FirebaseAuthException exception) {
     String errorMessage;
     switch (exception.code) {
@@ -58,5 +60,30 @@ class AuthFailures extends Failures {
         errorMessage = 'An unknown error occurred during registration.';
     }
     return AuthFailures(errorMessage);
+  }
+}
+
+// Database Failures
+class DatabaseFailures extends Failures {
+  const DatabaseFailures(super.errorMessage);
+
+  // Factory method to handle different database errors
+  factory DatabaseFailures.fromException(Exception exception) {
+    String errorMessage;
+
+    if (exception.toString().contains("UNIQUE constraint failed")) {
+      errorMessage = "This card already exists in the database.";
+    } else if (exception.toString().contains("no such table")) {
+      errorMessage = "Database table not found. Please initialize correctly.";
+    } else if (exception.toString().contains("database is locked")) {
+      errorMessage =
+          "Database is locked. Please retry the operation later.";
+    } else if (exception.toString().contains("syntax error")) {
+      errorMessage = "A database syntax error occurred.";
+    } else {
+      errorMessage = "An unexpected database error occurred.";
+    }
+
+    return DatabaseFailures(errorMessage);
   }
 }

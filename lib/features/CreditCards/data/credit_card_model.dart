@@ -1,4 +1,6 @@
 class CreditCardModel {
+
+  /// Converts JSON (e.g., from API or SharedPreferences) to `CreditCardModel`
   factory CreditCardModel.fromJson(Map<String, dynamic> json) {
     return CreditCardModel(
       id: json['id'],
@@ -7,11 +9,24 @@ class CreditCardModel {
       encryptedFirst12: json['encryptedFirst12'],
       last4: json['last4'],
       cardholderName: json['cardholderName'],
-      encryptedCVV: json['encryptedCVV'], // Encrypted CVV
-      expiryDate: json['expiryDate'], // Expiry date in MM/YY format
+      encryptedCVV: json['encryptedCVV'],
+      expiryDate: json['expiryDate'],
     );
   }
 
+  /// Converts a database map into a `CreditCardModel` instance
+  factory CreditCardModel.fromMap(Map<String, dynamic> map) {
+    return CreditCardModel(
+      id: map['id'],
+      cardNumber: "${map['encryptedFirst12']}${map['last4']}", // Reconstructing full number
+      cardType: map['cardType'] ?? '',
+      encryptedFirst12: map['encryptedFirst12'],
+      last4: map['last4'],
+      cardholderName: map['cardholderName'] ?? '',
+      encryptedCVV: map['encryptedCVV'],
+      expiryDate: map['expiryDate'],
+    );
+  }
   CreditCardModel({
     required this.id,
     required this.cardNumber,
@@ -24,14 +39,28 @@ class CreditCardModel {
   });
 
   final String id;
-  final String cardNumber; // (first 12 encrypted and last 4 plain)
+  final String cardNumber;
   final String cardType;
   final String encryptedFirst12;
   final String last4;
   final String cardholderName;
-  final String encryptedCVV; // CVV should always be encrypted
-  final String expiryDate; // Expiry date (e.g., "12/26")
+  final String encryptedCVV;
+  final String expiryDate;
 
+  /// Converts `CreditCardModel` to a map for database storage
+  Map<String, dynamic> toMap() {
+    return {
+      'id': id,
+      'encryptedFirst12': encryptedFirst12, // Only store encrypted part
+      'last4': last4, // Store only last 4 for display
+      'cardType': cardType,
+      'cardholderName': cardholderName,
+      'encryptedCVV': encryptedCVV,
+      'expiryDate': expiryDate,
+    };
+  }
+
+  /// Converts `CreditCardModel` to JSON format
   Map<String, dynamic> toJson() {
     return {
       'id': id,
