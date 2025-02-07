@@ -12,14 +12,15 @@ class CreditCardsSqfliteHelper {
   static Future<Database> _initDatabase() async {
     final dbPath = await getDatabasesPath();
     return openDatabase(
-      join(dbPath, 'credit_card.db'),
+      join(dbPath, 'credit_card_sql'),
       onCreate: (db, version) async {
         await db.execute('''
           CREATE TABLE cards(
             id TEXT PRIMARY KEY,
             cardType TEXT,
             last4 TEXT,
-            cardholderName TEXT
+            cardholderName TEXT,
+            expiryDate TEXT
           )
         ''');
       },
@@ -38,6 +39,7 @@ class CreditCardsSqfliteHelper {
 
   static Future<List<Map<String, dynamic>>> getCards() async {
     final db = await database;
+    // print(db.query('cards'));
     return db.query('cards');
   }
 

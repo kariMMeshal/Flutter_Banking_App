@@ -35,7 +35,8 @@ class BankingApp extends StatelessWidget {
         ),
         BlocProvider(create: (context) => BottomNavCubit()),
         BlocProvider(
-          create: (context) => locator.get<CreditcardsBloc>(),
+          create: (context) =>
+              locator.get<CreditcardsBloc>()..add(LoadCardsEvent()),
         )
       ],
       child: MaterialApp.router(

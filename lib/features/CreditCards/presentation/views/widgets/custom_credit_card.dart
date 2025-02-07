@@ -2,31 +2,38 @@ import 'package:banking_app2/features/CreditCards/data/credit_card_designs.dart'
 import 'package:banking_app2/features/CreditCards/data/credit_cards_types.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-class CustomCreditCard extends StatelessWidget {
 
+class CustomCreditCard extends StatelessWidget {
   const CustomCreditCard({
     super.key,
     required this.cardHolderName,
     required this.cardNumber,
     required this.expiryDate,
-    required this.cardType,
+    required this.cardTypeString,
   });
   final String cardHolderName, cardNumber, expiryDate;
-  final EgyptianCreditCardType cardType;
+  final String cardTypeString;
+  EgyptianCreditCardType cardTypeFromString(String cardTypeString) {
+    return EgyptianCreditCardType.values.firstWhere(
+      (e) => e.toString().split('.').last == cardTypeString,
+      orElse: () => EgyptianCreditCardType.Visa,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
-    // Fetch the design for the current card type
-    final design = creditCardDesigns[cardType] ?? CreditCardDesigns(
-      gradientColors: [Colors.grey, Colors.black], // Default design
-      displayText: 'Default',
-      textStyle: GoogleFonts.roboto(
-        fontSize: 24,
-        fontWeight: FontWeight.bold,
-        color: Colors.white,
-      ),
-      icon: Icons.credit_card,
-    );
+    EgyptianCreditCardType cardType = cardTypeFromString(cardTypeString);
+    final design = creditCardDesigns[cardType] ??
+        CreditCardDesigns(
+          gradientColors: [Colors.grey, Colors.black],
+          displayText: 'Default',
+          textStyle: GoogleFonts.roboto(
+            fontSize: 24,
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
+          ),
+          icon: Icons.credit_card,
+        );
 
     return Card(
       elevation: 8,

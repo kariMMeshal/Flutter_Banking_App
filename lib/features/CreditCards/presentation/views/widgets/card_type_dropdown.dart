@@ -5,26 +5,26 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 /// **Stateful Widget for Dropdown**
 class CardTypeDropdown extends StatefulWidget {
   const CardTypeDropdown({super.key, required this.onCardTypeSelected});
-  final Function(EgyptianCreditCardType?) onCardTypeSelected;
+  final Function(String?) onCardTypeSelected;
 
   @override
   CardTypeDropdownState createState() => CardTypeDropdownState();
 }
 
 class CardTypeDropdownState extends State<CardTypeDropdown> {
-  EgyptianCreditCardType? selectedCardType;
+  String? selectedCardType;
 
   @override
   Widget build(BuildContext context) {
-    return DropdownButtonFormField<EgyptianCreditCardType>(
+    return DropdownButtonFormField<String>(
       value: selectedCardType,
       decoration: InputDecoration(
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(25)),
         icon: const Icon(FontAwesomeIcons.ccVisa),
       ),
       items: EgyptianCreditCardType.values
-          .map((cardType) => DropdownMenuItem(
-                value: cardType,
+          .map((cardType) => DropdownMenuItem<String>(
+                value: cardType.name,
                 child: Text(cardType.name),
               ))
           .toList(),
@@ -34,6 +34,7 @@ class CardTypeDropdownState extends State<CardTypeDropdown> {
         });
         widget.onCardTypeSelected(newValue);
       },
+
       /// **Added Validator**
       validator: (value) {
         if (value == null) {

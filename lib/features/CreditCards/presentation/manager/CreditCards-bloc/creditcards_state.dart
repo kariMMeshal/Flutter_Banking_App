@@ -7,8 +7,8 @@ final class CreditcardsInitialState extends CreditcardsState {}
 
 final class CreditcardsLoadingState extends CreditcardsState {}
 
-final class CardsLoadedState extends CreditcardsState {
-  CardsLoadedState({required this.cards});
+final class CreditCardsLoadedState extends CreditcardsState {
+  CreditCardsLoadedState({required this.cards});
   final List<CreditCardModel> cards;
 }
 

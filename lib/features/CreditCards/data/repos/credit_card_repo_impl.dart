@@ -45,6 +45,7 @@ class CreditCardRepoImpl implements CreditCardRepo {
     try {
       final data = await CreditCardsSqfliteHelper.getCards();
       final cards = data.map((e) => CreditCardModel.fromMap(e)).toList();
+      // print(cards);
       return Right(cards);
     } catch (e) {
       return Left(DatabaseFailures('Failed to load cards: $e'));
