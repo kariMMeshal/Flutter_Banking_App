@@ -20,7 +20,6 @@ class CreditCardModel {
   final String encryptedCVV; // Encrypted CVV
   final String expiryDate;
 
-  /// ✅ **Added copyWith method**
   CreditCardModel copyWith({
     String? id,
     String? cardNumber,
@@ -75,7 +74,8 @@ class CreditCardModel {
   Map<String, dynamic> toMap() {
     return {
       'id': id,
-      'encryptedFirst12': encryptedFirst12, // Store encrypted part of the card number
+      'encryptedFirst12':
+          encryptedFirst12, // Store encrypted part of the card number
       'last4': last4, // Only store last 4 digits
       'cardType': cardType,
       'cardholderName': cardholderName,
@@ -88,7 +88,8 @@ class CreditCardModel {
   Map<String, dynamic> toJson() {
     return {
       'id': id,
-      'cardNumber': cardNumber, // Full card number (unsafe, only for API responses)
+      'cardNumber':
+          cardNumber, // Full card number (unsafe, only for API responses)
       'cardType': cardType,
       'encryptedFirst12': encryptedFirst12,
       'last4': last4,
@@ -96,5 +97,12 @@ class CreditCardModel {
       'encryptedCVV': encryptedCVV,
       'expiryDate': expiryDate,
     };
+  }
+
+  @override
+  String toString() {
+    return 'CreditCardModel(id: $id, cardNumber: $cardNumber, cardType: $cardType, '
+        'encryptedFirst12: $encryptedFirst12, last4: $last4, '
+        'cardholderName: $cardholderName, expiryDate: $expiryDate , cvv: $encryptedCVV)';
   }
 }

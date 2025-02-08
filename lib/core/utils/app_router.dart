@@ -19,6 +19,31 @@ abstract class AppRouter {
         builder: (context, state) => const SplashView(),
       ),
       GoRoute(
+        path: OnBoardingView.route,
+        builder: (context, state) => const OnBoardingView(),
+      ),
+      GoRoute(
+        path: RegisterView.route,
+        builder: (context, state) => BlocProvider(
+          create: (context) => locator.get<AuthBloc>(),
+          child: const RegisterView(),
+        ),
+      ),
+      GoRoute(
+        path: LoginView.route,
+        builder: (context, state) => BlocProvider(
+          create: (context) => locator.get<AuthBloc>(),
+          child: const LoginView(),
+        ),
+      ),
+      GoRoute(
+        path: ForgetPasswordView.route,
+        builder: (context, state) => BlocProvider(
+          create: (context) => locator.get<AuthBloc>(),
+          child: const ForgetPasswordView(),
+        ),
+      ),
+      GoRoute(
         path: HomeView.route,
         builder: (context, state) => const HomeView(),
       ),
@@ -29,30 +54,6 @@ abstract class AppRouter {
       GoRoute(
         path: CreditCardsView.route,
         builder: (context, state) => const CreditCardsView(),
-      ),
-      GoRoute(
-        path: OnBoardingView.route,
-        builder: (context, state) => const OnBoardingView(),
-      ),
-      GoRoute(
-          path: LoginView.route,
-          builder: (context, state) => BlocProvider(
-                create: (context) => locator.get<AuthBloc>(),
-                child: const LoginView(),
-              )),
-      GoRoute(
-        path: RegisterView.route,
-        builder: (context, state) => BlocProvider(
-          create: (context) => locator.get<AuthBloc>(),
-          child: const RegisterView(),
-        ),
-      ),
-      GoRoute(
-        path: ForgetPasswordView.route,
-        builder: (context, state) => BlocProvider(
-          create: (context) => locator.get<AuthBloc>(),
-          child: const ForgetPasswordView(),
-        ),
       ),
     ],
   );
