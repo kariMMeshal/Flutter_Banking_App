@@ -1,11 +1,11 @@
 import 'package:banking_app2/core/errors/failures.dart';
 import 'package:banking_app2/features/Auth/data/repos/auth_repo.dart';
+import 'package:banking_app2/features/CreditCards/data/credit_cards_sqflite_helper.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class AuthRepoImpl implements AuthRepo {
-
   AuthRepoImpl({required FirebaseAuth firebaseAuth})
       : _firebaseAuth = firebaseAuth;
   final FirebaseAuth _firebaseAuth;
@@ -72,7 +72,7 @@ class AuthRepoImpl implements AuthRepo {
         return Left(AuthFailures.forSignIn(
             FirebaseAuthException(code: 'email-not-verified')));
       }
-
+      await CreditCardsSqfliteHelper.resetDatabase();
       return Right(user!);
     } on FirebaseAuthException catch (e) {
       return Left(AuthFailures.forSignIn(e));
@@ -89,7 +89,8 @@ class AuthRepoImpl implements AuthRepo {
           await FirebaseAuth.instance.fetchSignInMethodsForEmail(emailAddress);
 
       if (signInMethods.isEmpty) {
-        return const Left(AuthFailures('No user found with this email address.'));
+        return const Left(
+            AuthFailures('No user found with this email address.'));
       }
 
       await FirebaseAuth.instance.sendPasswordResetEmail(email: emailAddress);
@@ -98,6 +99,17 @@ class AuthRepoImpl implements AuthRepo {
       return Left(
         AuthFailures.forSignIn(e),
       ); // Reuse the `AuthFailures` class for errors.
+    }
+  }
+
+  /////////////////////////////////////
+  @override
+  Future<Either<Failures, void>> signOut() async {
+    try {
+      await _firebaseAuth.signOut();
+      return const Right(null);
+    } catch (e) {
+      return Left(AuthFailures(e.toString()));
     }
   }
 }

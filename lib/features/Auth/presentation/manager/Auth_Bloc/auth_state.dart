@@ -8,13 +8,11 @@ final class AuthInitial extends AuthState {}
 final class LoginLoading extends AuthState {}
 
 final class LoginSuccess extends AuthState {
-
   LoginSuccess({required this.userName});
   final String userName;
 }
 
 final class LoginFailure extends AuthState {
-
   LoginFailure({required this.errorMessage});
   final String errorMessage;
 }
@@ -22,7 +20,6 @@ final class LoginFailure extends AuthState {
 final class RegisterLoading extends AuthState {}
 
 final class RegisterSuccess extends AuthState {
-
   RegisterSuccess({required this.userName});
   final String userName;
 }
@@ -38,5 +35,15 @@ final class ResetPassSuccess extends AuthState {}
 
 final class ResetPassFailure extends AuthState {
   ResetPassFailure({required this.errorMessage});
+  final String errorMessage;
+}
+
+
+
+final class SignOutLoading extends AuthState {}
+final class SignOutSuccess extends AuthState {}
+
+final class SignOutFailure extends AuthState {
+  SignOutFailure({required this.errorMessage});
   final String errorMessage;
 }

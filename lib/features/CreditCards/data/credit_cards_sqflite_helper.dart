@@ -12,11 +12,12 @@ class CreditCardsSqfliteHelper {
   static Future<Database> _initDatabase() async {
     final dbPath = await getDatabasesPath();
     return openDatabase(
-      join(dbPath, 'credit_card_sql'),
+      join(dbPath, 'credit_card.sql'),
       onCreate: (db, version) async {
         await db.execute('''
           CREATE TABLE cards(
             id TEXT PRIMARY KEY,
+            userId TEXT,  -- Store the logged-in user's unique ID
             cardType TEXT,
             last4 TEXT,
             cardholderName TEXT,
@@ -28,27 +29,40 @@ class CreditCardsSqfliteHelper {
     );
   }
 
-  static Future<void> insertCard(Map<String, dynamic> cardData) async {
+  static Future<void> insertCard(
+      {required String userId, required Map<String, dynamic> cardData}) async {
     final db = await database;
     await db.insert(
       'cards',
-      cardData,
+      {'userId': userId, ...cardData},
       conflictAlgorithm: ConflictAlgorithm.replace,
     );
   }
 
-  static Future<List<Map<String, dynamic>>> getCards() async {
+  static Future<List<Map<String, dynamic>>> getCards(
+      {required String userId}) async {
     final db = await database;
-    // print(db.query('cards'));
-    return db.query('cards');
+    return db.query(
+      'cards',
+      where: 'userId = ?',
+      whereArgs: [userId],
+    );
   }
 
-  static Future<void> deleteCard(String id) async {
+  static Future<void> deleteCard(
+      {required String userId, required String cardId}) async {
     final db = await database;
     await db.delete(
       'cards',
-      where: 'id = ?',
-      whereArgs: [id],
+      where: 'id = ? AND userId = ?',
+      whereArgs: [cardId, userId],
     );
+  }
+
+  static Future<void> resetDatabase() async {
+    if (_database != null) {
+      await _database!.close();
+      _database = null;
+    }
   }
 }

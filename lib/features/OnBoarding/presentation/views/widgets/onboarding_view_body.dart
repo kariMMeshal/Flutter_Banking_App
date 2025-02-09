@@ -1,6 +1,6 @@
 import 'package:banking_app2/core/Helpers/sharedprefs_helper.dart';
 import 'package:banking_app2/core/common/styles/styles.dart';
-import 'package:banking_app2/features/Home/presentation/views/home_view.dart';
+import 'package:banking_app2/features/Auth/presentation/views/register_view.dart';
 import 'package:banking_app2/features/OnBoarding/presentation/views/widgets/buildpage_widget.dart';
 import 'package:banking_app2/core/common/widgets/custom_icon_button.dart';
 import 'package:banking_app2/features/OnBoarding/presentation/views/widgets/custom_page_indicator.dart';
@@ -93,7 +93,7 @@ class OnboardingViewBodyState extends State<OnboardingViewBody> {
   void getStarted() async {
     await SharedPrefsHelper.saveBool('ShowHome', true);
     if (mounted) {
-      GoRouter.of(context).push(HomeView.route);
+      GoRouter.of(context).push(RegisterView.route);
     }
   }
 }

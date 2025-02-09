@@ -61,6 +61,30 @@ class AuthFailures extends Failures {
     }
     return AuthFailures(errorMessage);
   }
+// Sign-out Failures
+  factory AuthFailures.forSignOut(Exception exception) {
+    String errorMessage;
+
+    if (exception is FirebaseAuthException) {
+      switch (exception.code) {
+        case 'network-request-failed':
+          errorMessage = 'Network error. Please check your connection.';
+          break;
+        case 'user-token-expired':
+          errorMessage = 'Your session has expired. Please sign in again.';
+          break;
+        case 'too-many-requests':
+          errorMessage = 'Too many sign-out attempts. Try again later.';
+          break;
+        default:
+          errorMessage = 'An error occurred while signing out. Try again.';
+      }
+    } else {
+      errorMessage = 'An unexpected error occurred while signing out.';
+    }
+
+    return AuthFailures(errorMessage);
+  }
 }
 
 // Database Failures
@@ -76,8 +100,7 @@ class DatabaseFailures extends Failures {
     } else if (exception.toString().contains("no such table")) {
       errorMessage = "Database table not found. Please initialize correctly.";
     } else if (exception.toString().contains("database is locked")) {
-      errorMessage =
-          "Database is locked. Please retry the operation later.";
+      errorMessage = "Database is locked. Please retry the operation later.";
     } else if (exception.toString().contains("syntax error")) {
       errorMessage = "A database syntax error occurred.";
     } else {

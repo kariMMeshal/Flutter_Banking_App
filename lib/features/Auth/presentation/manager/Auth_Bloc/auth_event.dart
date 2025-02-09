@@ -4,7 +4,6 @@ part of 'auth_bloc.dart';
 sealed class AuthEvent {}
 
 final class RegisterEvent extends AuthEvent {
-
   RegisterEvent({
     required this.salary,
     required this.emailAddress,
@@ -30,7 +29,8 @@ final class LoginEvent extends AuthEvent {
 }
 
 final class ResetPassEvent extends AuthEvent {
-
   ResetPassEvent({required this.email});
   final String email;
 }
+
+final class SignOutEvent extends AuthEvent {}

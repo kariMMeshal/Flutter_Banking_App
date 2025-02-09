@@ -1,6 +1,7 @@
 import 'package:banking_app2/core/utils/app_router.dart';
 import 'package:banking_app2/core/utils/constants.dart';
 import 'package:banking_app2/core/utils/dependency_injection.dart';
+import 'package:banking_app2/features/Auth/presentation/manager/Auth_Bloc/auth_bloc.dart';
 import 'package:banking_app2/features/CreditCards/presentation/manager/CreditCards-bloc/creditcards_bloc.dart';
 import 'package:banking_app2/features/Home/presentation/manager/BottomNav_Cubit/bottom_nav_cubit.dart';
 import 'package:banking_app2/features/Home/presentation/manager/Wallet_Cubit/wallet_cubit.dart';
@@ -19,7 +20,7 @@ void main() async {
 
 Future<void> initializeApp() async {
   await Firebase.initializeApp();
-  await Future.delayed(const Duration(seconds: 2));
+
   await setupLocator();
 }
 
@@ -37,7 +38,8 @@ class BankingApp extends StatelessWidget {
         BlocProvider(
           create: (context) =>
               locator.get<CreditcardsBloc>()..add(LoadCardsEvent()),
-        )
+        ),
+        BlocProvider(create: (context) => locator.get<AuthBloc>()),
       ],
       child: MaterialApp.router(
         routerConfig: AppRouter.router,
