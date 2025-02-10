@@ -21,6 +21,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
           city: event.city,
           totalSalary: event.salary,
           reminingSalary: event.salary,
+          monthlyLimit: 0,
+          saving: 0,
         );
         result.fold(
           (failure) =>

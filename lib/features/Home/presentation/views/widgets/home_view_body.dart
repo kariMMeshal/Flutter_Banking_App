@@ -1,9 +1,10 @@
 import 'package:banking_app2/core/common/styles/styles.dart';
 import 'package:banking_app2/core/common/widgets/custom_loading_indecator.dart';
+import 'package:banking_app2/core/utils/constants.dart';
+import 'package:banking_app2/features/CreditCards/presentation/views/widgets/transaction_list_view.dart';
 import 'package:banking_app2/features/Home/presentation/manager/Wallet_Cubit/wallet_cubit.dart';
 import 'package:banking_app2/features/Home/presentation/views/widgets/home_custom_appbar.dart';
 import 'package:banking_app2/features/Home/presentation/views/widgets/home_services_section.dart';
-import 'package:banking_app2/features/Home/presentation/views/widgets/salary_progress_indecator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -20,25 +21,28 @@ class HomeViewBody extends StatelessWidget {
           return Center(child: Text('Error: ${state.message}'));
         } else if (state is WalletUpdated) {
           final currentBalance = state.remainingAmount;
-          final totalSalary = state.totalSalary;
+          // final totalSalary = state.totalSalary;
 
           return ListView(
             physics: const BouncingScrollPhysics(),
             children: [
               HomeCustomAppbar(currentBalance: currentBalance),
-              const Padding(
-                padding: EdgeInsets.only(left: 20, top: 20),
-                child: Text('Usage', style: Styles.ktextStyle16),
-              ),
-              SalaryProgressIndicator(
-                totalSalary: totalSalary,
-                remainingSalary: currentBalance,
-              ),
-              const Padding(
-                padding: EdgeInsets.only(left: 20,  bottom: 5),
-                child: Text('Services', style: Styles.ktextStyle16),
-              ),
               const HomeServicesSection(),
+              const SizedBox(height: 30),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 25),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Text('Transactions', style: Styles.ktextStyle18),
+                    InkWell(
+                        onTap: () {},
+                        child: Text('Show all',
+                            style: Styles.ktextStyle12.copyWith(color: kLightBlue))),
+                  ],
+                ),
+              ),
+              const TransactionListView(itemsNum: 5,),
             ],
           );
         } else {

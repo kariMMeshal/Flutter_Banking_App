@@ -9,8 +9,10 @@ class WalletCubit extends Cubit<WalletState> {
   WalletCubit(this._firebaseAuth) : super(WalletInitial());
 
   final FirebaseAuth _firebaseAuth;
-  num amount = 0.0; // Remaining amount
+  num currentAmount = 0.0;
   num totalSalary = 0.0;
+  num monthlyLimit = 0.0;
+  num saving = 0.0;
 
   // Fetch salary from Firestore
   Future<void> fetchSalary() async {
@@ -25,8 +27,9 @@ class WalletCubit extends Cubit<WalletState> {
 
       if (userData != null && userData.containsKey('totalSalary')) {
         totalSalary = userData['totalSalary'] as num;
-        amount = userData['remainingAmount'] as num;
-        emit(WalletUpdated(totalSalary: totalSalary, remainingAmount: amount));
+        currentAmount = userData['remainingAmount'] as num;
+        emit(WalletUpdated(
+            totalSalary: totalSalary, remainingAmount: currentAmount));
       } else {
         emit(WalletError(message: 'Salary field does not exist'));
       }
@@ -37,17 +40,19 @@ class WalletCubit extends Cubit<WalletState> {
 
   // Increase the amount
   void increaseAmount({required num value}) async {
-    amount += value;
-    await _updateFirestore(remainingAmount: amount);
-    emit(WalletUpdated(totalSalary: totalSalary, remainingAmount: amount));
+    currentAmount += value;
+    await _updateFirestore(remainingAmount: currentAmount);
+    emit(WalletUpdated(
+        totalSalary: totalSalary, remainingAmount: currentAmount));
   }
 
   // Decrease the amount
   void decreaseAmount({required num value}) async {
-    if (amount >= value) {
-      amount -= value;
-      await _updateFirestore(remainingAmount: amount);
-      emit(WalletUpdated(totalSalary: totalSalary, remainingAmount: amount));
+    if (currentAmount >= value) {
+      currentAmount -= value;
+      await _updateFirestore(remainingAmount: currentAmount);
+      emit(WalletUpdated(
+          totalSalary: totalSalary, remainingAmount: currentAmount));
     } else {
       emit(WalletError(message: 'No enough money you broke'));
     }
@@ -57,19 +62,36 @@ class WalletCubit extends Cubit<WalletState> {
   void updateSalary({required num newSalary}) async {
     totalSalary = newSalary;
     await _updateFirestore(totalSalary: newSalary);
-    emit(WalletUpdated(totalSalary: newSalary, remainingAmount: amount));
+    emit(WalletUpdated(totalSalary: newSalary, remainingAmount: currentAmount));
+  }
+
+  //Update Monthly limit
+  void updateMonthlyLimit({required num newLimit}) async {
+    monthlyLimit = newLimit;
+    _updateFirestore(monthlyLimit: newLimit);
+  }
+
+  //Update saving
+  void updateSaving({required num newSaving}) {
+    saving = newSaving;
+    _updateFirestore(saving: newSaving);
   }
 
   // Helper method to update Firestore
-  Future<void> _updateFirestore(
-      {num? totalSalary, num? remainingAmount}) async {
+  Future<void> _updateFirestore({
+    num? totalSalary,
+    num? remainingAmount,
+    num? saving,
+    num? monthlyLimit,
+  }) async {
     try {
       final Map<String, dynamic> updateData = {};
       if (totalSalary != null) updateData['totalSalary'] = totalSalary;
       if (remainingAmount != null) {
         updateData['remainingAmount'] = remainingAmount;
       }
-
+      if (saving != null) updateData['saving'] = saving;
+      if (monthlyLimit != null) updateData['monthlyLimit'] = monthlyLimit;
       await FirebaseFirestore.instance
           .collection('users')
           .doc(_firebaseAuth.currentUser!.uid)

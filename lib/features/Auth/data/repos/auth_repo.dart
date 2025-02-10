@@ -12,6 +12,8 @@ abstract class AuthRepo {
     required String city,
     required num totalSalary,
     required num reminingSalary,
+    required num monthlyLimit,
+    required num saving,
   });
   Future<Either<Failures, User>> signIn({
     required String emailAddress,

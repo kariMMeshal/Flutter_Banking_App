@@ -20,6 +20,8 @@ class AuthRepoImpl implements AuthRepo {
     required String city,
     required num totalSalary,
     required num reminingSalary,
+    required num monthlyLimit,
+    required num saving,
   }) async {
     try {
       final credential = await _firebaseAuth.createUserWithEmailAndPassword(
@@ -43,6 +45,8 @@ class AuthRepoImpl implements AuthRepo {
         'createdAt': FieldValue.serverTimestamp(), // Account creation time
         'totalSalary': totalSalary,
         'remainingAmount': totalSalary,
+        'monthlyLimit': monthlyLimit,
+        'saving': saving,
       });
       await credential.user!.reload();
       final updatedUser = _firebaseAuth.currentUser;

@@ -47,7 +47,7 @@ class SplashViewBodyState extends State<SplashViewBody> {
       GoRouter.of(context).go(route);
     } catch (e) {
       if (!mounted) return;
-      GoRouter.of(context).go(OnBoardingView.route); // Fallback to onboarding
+      GoRouter.of(context).go(OnBoardingView.route); 
     }
   }
 
@@ -62,8 +62,7 @@ class SplashViewBodyState extends State<SplashViewBody> {
 
   @override
   void dispose() {
-    _timer
-        ?.cancel(); // Cancel the timer to avoid calling setState() after dispose
+    _timer?.cancel();
     super.dispose();
   }
 

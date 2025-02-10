@@ -1,9 +1,9 @@
 import 'package:banking_app2/core/common/styles/styles.dart';
+import 'package:banking_app2/core/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
 class SalaryProgressIndicator extends StatelessWidget {
-
   const SalaryProgressIndicator({
     super.key,
     required this.totalSalary,
@@ -29,12 +29,12 @@ class SalaryProgressIndicator extends StatelessWidget {
         }
         return CircularPercentIndicator(
           progressColor: Color.lerp(
-            Color.lerp(Colors.red.shade800, Colors.yellow.shade600, value),
-            Color.lerp(Colors.yellow.shade600, Colors.green.shade600, value),
+            Color.lerp(kRed, kYellow, value),
+            Color.lerp(kYellow, kGreen, value),
             value,
           ),
           radius: 90,
-          lineWidth: 10,
+          lineWidth: 8,
           percent: value,
           backgroundColor: Colors.grey[200]!,
           circularStrokeCap: CircularStrokeCap.round,
@@ -53,7 +53,7 @@ class SalaryProgressIndicator extends StatelessWidget {
                 isExceeded
                     ? '+ \$${(remainingSalary - totalSalary).toStringAsFixed(2)}'
                     : '',
-                style: Styles.ktextStyle12.copyWith(color: Colors.green),
+                style: Styles.ktextStyle12.copyWith(color: kGreen),
               ),
             ],
           ),

@@ -39,8 +39,8 @@ class HomeView extends StatelessWidget {
     final List<Widget> screens = [
       const HomeViewBody(),
       const CreditCardsViewBody(),
-      const ProfileView(),
       const Center(child: Text('Settings Screen')),
+      const ProfileView(),
     ];
 
     return screens[selectedIndex];

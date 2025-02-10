@@ -44,19 +44,20 @@ class OnboardingViewBodyState extends State<OnboardingViewBody> {
             children: const [
               BuildPage(
                 title: 'Welcome to KWallet',
+                subTitle: 'your best banking app',
                 imgUrl: 'assets/images/9462114.jpg',
               ),
               BuildPage(
-                title: 'Financial Services',
-                imgUrl: 'assets/images/2869279.jpg',
+                title: 'Credit Cards Managemnet',
+                imgUrl: 'assets/images/Illustration2.png',
               ),
               BuildPage(
-                title: 'Secure Money Transaction',
-                imgUrl: 'assets/images/test1.jpg',
+                title: 'Control your Money Flow & Transactions',
+                imgUrl: 'assets/images/Group3.png',
               ),
               BuildPage(
                 title: 'Get Started Now',
-                imgUrl: 'assets/images/4198074.jpg',
+                imgUrl: 'assets/images/Launching.gif',
               ),
             ],
           ),

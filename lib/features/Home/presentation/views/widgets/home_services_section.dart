@@ -21,63 +21,25 @@ class HomeServicesSection extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Row(
+            spacing: 20,
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               ServicesIconButton(
-                  iconData: FontAwesomeIcons.wallet,
-                  iconColor: Colors.indigo,
+                  iconData: Icons.arrow_upward_rounded,
                   ontap: () {},
-                  bottomText: 'ًWallet'),
+                  bottomText: 'Send'),
               ServicesIconButton(
-                  iconData: FontAwesomeIcons.moneyBillTransfer,
-                  iconColor: Colors.green,
+                  iconData: Icons.arrow_downward_rounded,
                   ontap: () {},
-                  bottomText: 'Transfer'),
+                  bottomText: 'Recieve'),
               ServicesIconButton(
-                  iconData:FontAwesomeIcons.handHoldingDollar,
-                  iconColor: const Color(0xffE1169A),
+                  iconData: FontAwesomeIcons.creditCard,
                   ontap: () {},
-                  bottomText: 'withdraw'),
-            ],
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
+                  bottomText: 'Credit Cards'),
               ServicesIconButton(
-                  iconData: FontAwesomeIcons.solidCreditCard,
-                  iconColor: const Color(0xffFB6B18),
+                  iconData: FontAwesomeIcons.chartColumn,
                   ontap: () {},
-                  bottomText: 'Credit\nCard'),
-                ServicesIconButton(
-                  iconData:FontAwesomeIcons.receipt,
-                  iconColor: const Color(0xff52D5BA),
-                  ontap: () {},
-                  bottomText: 'pills'),
-              ServicesIconButton(
-                  iconData:FontAwesomeIcons.moneyBillTrendUp,
-                  iconColor: const Color(0xffFFAF2A),
-                  ontap: () {},
-                  bottomText: 'Deposit'),
-            ],
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-                ServicesIconButton(
-                  iconData: Icons.receipt_long,
-                  iconColor: Colors.deepPurple,
-                  ontap: () {},
-                  bottomText: 'Transactions\nreport'),
-              ServicesIconButton(
-                  iconData: FontAwesomeIcons.handHoldingHeart,
-                  iconColor: const Color(0xffFF4267),
-                  ontap: () {},
-                  bottomText: 'Donations'),
-              ServicesIconButton(
-                  iconData: FontAwesomeIcons.vault,
-                  iconColor: const Color(0xff5655B9),
-                  ontap: () {},
-                  bottomText: 'Savings'),
+                  bottomText: 'History'),
             ],
           ),
         ],
