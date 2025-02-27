@@ -21,6 +21,10 @@ class CreditCardsViewBody extends StatelessWidget {
         const CreditCardsViewAppbar(),
         const CreditCardSlider(),
         const SizedBox(height: 10),
+        const Padding(
+          padding: EdgeInsets.all(10),
+          child: Text("Banking transactions", style: Styles.ktextStyle20),
+        ),
         const TransactionListView(itemsNum: 3),
         const SizedBox(height: 20),
         const Padding(

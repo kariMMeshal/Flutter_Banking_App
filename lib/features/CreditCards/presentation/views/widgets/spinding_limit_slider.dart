@@ -32,24 +32,26 @@ class SpendingLimitSliderState extends State<SpendingLimitSlider> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(20),
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(25), color: Colors.grey.shade100),
+          borderRadius: BorderRadius.circular(25), color: Colors.grey.shade200),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text("Amount : \$${_currentValue.toStringAsFixed(0)}", style: Styles.ktextStyle16),
+          Text("      Amount : \$${_currentValue.toStringAsFixed(0)}",
+              style: Styles.ktextStyle14),
           SliderTheme(
-            data: SliderTheme.of(context).copyWith(
-                tickMarkShape: SliderTickMarkShape.noTickMark,
-                thumbColor: kBlue),
+            data: SliderTheme.of(context)
+                .copyWith(tickMarkShape: SliderTickMarkShape.noTickMark),
             child: Slider(
               min: widget.minValue,
               max: widget.maxValue,
               value: _currentValue,
-              divisions: 6,
+              divisions: 10,
               label: _currentValue.toStringAsFixed(0),
-              activeColor: kBlue,
+              activeColor: kLightBlue,
+              inactiveColor: Colors.white,
+              thumbColor: kBlue,
               onChanged: (value) {
                 setState(() {
                   _currentValue = value;
@@ -60,17 +62,17 @@ class SpendingLimitSliderState extends State<SpendingLimitSlider> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
+            padding: const EdgeInsets.symmetric(horizontal: 25),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text("\$${widget.minValue.toStringAsFixed(0)}",
-                    style: const TextStyle(fontSize: 14, color: Colors.grey)),
+                    style: const TextStyle(fontSize: 12, color: Colors.grey)),
                 Text("\$${_currentValue.toStringAsFixed(0)}",
                     style: const TextStyle(
-                        fontSize: 16, fontWeight: FontWeight.bold)),
+                        fontSize: 12, fontWeight: FontWeight.bold)),
                 Text("\$${widget.maxValue.toStringAsFixed(0)}",
-                    style: const TextStyle(fontSize: 14, color: Colors.grey)),
+                    style: const TextStyle(fontSize: 12, color: Colors.grey)),
               ],
             ),
           ),

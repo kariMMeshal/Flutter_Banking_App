@@ -25,13 +25,13 @@ class HomeServicesSection extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               ServicesIconButton(
-                  iconData: Icons.arrow_upward_rounded,
+                  iconData: Icons.receipt_long,
                   ontap: () {},
-                  bottomText: 'Send'),
+                  bottomText: 'Add receipt'),
               ServicesIconButton(
-                  iconData: Icons.arrow_downward_rounded,
+                  iconData: Icons.add_box,
                   ontap: () {},
-                  bottomText: 'Recieve'),
+                  bottomText: 'Add manual'),
               ServicesIconButton(
                   iconData: FontAwesomeIcons.creditCard,
                   ontap: () {},

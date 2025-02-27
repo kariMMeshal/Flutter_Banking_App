@@ -34,15 +34,19 @@ class HomeViewBody extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const Text('Transactions', style: Styles.ktextStyle18),
+                    const Text('Manual Transactions',
+                        style: Styles.ktextStyle18),
                     InkWell(
                         onTap: () {},
                         child: Text('Show all',
-                            style: Styles.ktextStyle12.copyWith(color: kLightBlue))),
+                            style: Styles.ktextStyle12
+                                .copyWith(color: kLightBlue))),
                   ],
                 ),
               ),
-              const TransactionListView(itemsNum: 5,),
+              const TransactionListView(
+                itemsNum: 5,
+              ),
             ],
           );
         } else {
