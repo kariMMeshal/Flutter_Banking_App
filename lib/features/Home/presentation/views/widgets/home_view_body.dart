@@ -21,7 +21,6 @@ class HomeViewBody extends StatelessWidget {
           return Center(child: Text('Error: ${state.message}'));
         } else if (state is WalletUpdated) {
           final currentBalance = state.remainingAmount;
-          // final totalSalary = state.totalSalary;
 
           return ListView(
             physics: const BouncingScrollPhysics(),
