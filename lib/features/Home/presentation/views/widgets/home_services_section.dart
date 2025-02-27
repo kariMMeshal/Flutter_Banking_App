@@ -1,4 +1,5 @@
 import 'package:banking_app2/core/utils/constants.dart';
+import 'package:banking_app2/features/Home/presentation/views/widgets/reciept_text_extract.dart';
 import 'package:banking_app2/features/Home/presentation/views/widgets/services_icon_button.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -26,7 +27,14 @@ class HomeServicesSection extends StatelessWidget {
             children: [
               ServicesIconButton(
                   iconData: Icons.receipt_long,
-                  ontap: () {},
+                  ontap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const ReceiptTextExtractor(),
+                      ),
+                    );
+                  },
                   bottomText: 'Add receipt'),
               ServicesIconButton(
                   iconData: Icons.add_box,
