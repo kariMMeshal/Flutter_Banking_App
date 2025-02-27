@@ -5,6 +5,7 @@ import 'package:banking_app2/features/Auth/presentation/views/login_view.dart';
 import 'package:banking_app2/features/Auth/presentation/views/register_view.dart';
 import 'package:banking_app2/features/CreditCards/presentation/views/add_cards_view.dart';
 import 'package:banking_app2/features/Home/presentation/views/home_view.dart';
+import 'package:banking_app2/features/Home/presentation/views/widgets/reciept_text_extract.dart';
 import 'package:banking_app2/features/OnBoarding/presentation/views/onboarding_view.dart';
 import 'package:banking_app2/features/Splash/presentation/views/splash_view.dart';
 import 'package:banking_app2/features/CreditCards/presentation/views/credit_cards_view.dart';
@@ -54,6 +55,10 @@ abstract class AppRouter {
       GoRoute(
         path: CreditCardsView.route,
         builder: (context, state) => const CreditCardsView(),
+      ),
+      GoRoute(
+        path: ReceiptTextExtractor.route,
+        builder: (context, state) => const ReceiptTextExtractor(),
       ),
     ],
   );
