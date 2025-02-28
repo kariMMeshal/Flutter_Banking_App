@@ -62,8 +62,7 @@ class _CustomCreditCardState extends State<CustomCreditCard> {
         final LocalAuthHelper authHelper = LocalAuthHelper();
         return GestureDetector(
           onTap: () async {
-            bool isAuthenticated = await authHelper.authenticateUser();
-            if (!isEncryptedVisible && isAuthenticated) {
+            if (!isEncryptedVisible) {
               // ignore: use_build_context_synchronously
               context.read<CreditcardsBloc>().add(
                     LoadEncryptedCardDataEvent(cardId: widget.cardId),

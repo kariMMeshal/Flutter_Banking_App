@@ -1,8 +1,7 @@
 class ApiConstants {
   static const String apiBaseUrl =
-      "https://api.together.xyz/v1/chat/completions";
-  static const String apiToken =
-      "fdc5b40714e67bd31560f494ddf4ab37f549a7a787ce4a000898a47f028f27ed";
+      "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=";
+  static const String apiToken = "AIzaSyDN6P65kE04CweqLMlB21jAcx6vlrmNxsY";
 }
 
 class ApiErrors {

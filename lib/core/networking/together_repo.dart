@@ -9,29 +9,16 @@ class TogetherRepository {
 
   Future<ChatResponse> getChatResponse(String userMessage) async {
     final request = ChatRequest(
-      model: "deepseek-ai/DeepSeek-V3",
-      messages: [
-        {"role": "user", "content": userMessage},
+      contents: [
+        Content(parts: [Part(text: userMessage)])
       ],
     );
-    return _apiService.sendMessage(request);
+
+    final json = request.toJson();
+
+    final response = await _apiService.sendRequest(json);
+
+    return ChatResponse.fromJson(response);
   }
 }
 
-// // ✅ Test function moved **outside** the class
-// Future<void> main() async {
-//   final Dio dio = Dio(); // 🔹 Initialize Dio properly
-//   final apiService = ApiService(dio);
-//   final repository = TogetherRepository(apiService);
-
-//   String testMessage = "Hello, AI! My name is kareem ";
-
-//   try {
-//     ChatResponse response = await repository.getChatResponse(testMessage);
-//     print("Response: ${response.toString()}");
-//   } catch (error) {
-//     print("Error: $error");
-//   }
-// }
-
-// // Call `test()` somewhere in `main()` to execute it
