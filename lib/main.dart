@@ -1,54 +1,48 @@
-import 'package:banking_app2/core/utils/app_router.dart';
+import 'package:awesome_notifications/awesome_notifications.dart';
+import 'package:banking_app2/banking_app.dart';
+import 'package:banking_app2/core/Helpers/notification_helper.dart';
 import 'package:banking_app2/core/utils/constants.dart';
 import 'package:banking_app2/core/utils/dependency_injection.dart';
-import 'package:banking_app2/features/Auth/presentation/manager/Auth_Bloc/auth_bloc.dart';
-import 'package:banking_app2/features/CreditCards/presentation/manager/CreditCards-bloc/creditcards_bloc.dart';
-import 'package:banking_app2/features/Home/presentation/manager/BottomNav_Cubit/bottom_nav_cubit.dart';
-import 'package:banking_app2/features/Home/presentation/manager/Wallet_Cubit/wallet_cubit.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
-import 'package:google_fonts/google_fonts.dart';
 
-void main() async {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await initializeApp();
+  await Firebase.initializeApp();
+
+  await initializeNotifications(); // 🔹 تم استبدال `requestNotificationPermission` بوظيفة أكثر شمولًا
+  await setupLocator();
+
+  String? userId = FirebaseAuth.instance.currentUser?.uid;
+  if (userId != null) {
+    NotificationHelper(userId);
+  }
   FlutterNativeSplash.remove();
+
   runApp(const BankingApp());
 }
 
-Future<void> initializeApp() async {
-  await Firebase.initializeApp();
+Future<void> initializeNotifications() async {
+  await AwesomeNotifications().initialize(
+    null,
+    [
+      NotificationChannel(
+        channelKey: 'basic_channel',
+        channelName: 'Basic Notifications',
+        channelDescription: 'Notification channel for basic alerts',
+        defaultColor: kPurple,
+        ledColor: Colors.white,
+        importance: NotificationImportance.High,
+        channelShowBadge: true,
+      )
+    ],
+    debug: true,
+  );
 
-  await setupLocator();
-}
-
-class BankingApp extends StatelessWidget {
-  const BankingApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(
-          create: (context) => locator.get<WalletCubit>()..fetchSalary(),
-        ),
-        BlocProvider(create: (context) => BottomNavCubit()),
-        BlocProvider(
-          create: (context) =>
-              locator.get<CreditcardsBloc>()..add(LoadCardsEvent()),
-        ),
-        BlocProvider(create: (context) => locator.get<AuthBloc>()),
-      ],
-      child: MaterialApp.router(
-        routerConfig: AppRouter.router,
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData.light().copyWith(
-          scaffoldBackgroundColor: klightBackground,
-          textTheme: GoogleFonts.poppinsTextTheme((ThemeData.light().textTheme)),
-        ),
-      ),
-    );
+  bool isAllowed = await AwesomeNotifications().isNotificationAllowed();
+  if (!isAllowed) {
+    await AwesomeNotifications().requestPermissionToSendNotifications();
   }
 }

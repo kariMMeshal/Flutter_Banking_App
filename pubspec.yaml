@@ -30,6 +30,7 @@ environment:
 dependencies:
   archive: ^4.0.2
   awesome_dialog: ^3.2.1
+  awesome_notifications: ^0.10.0
   bloc: ^9.0.0
   build_runner: ^2.4.15
   carousel_slider: ^5.0.0
@@ -40,6 +41,7 @@ dependencies:
   encrypt: ^5.0.3
   firebase_auth: ^5.3.4
   firebase_core: ^3.9.0
+  firebase_messaging: ^15.2.4
   fl_chart: ^0.70.2
   flutter:
     sdk: flutter

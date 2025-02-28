@@ -35,7 +35,7 @@ class CustomizedPlanScreenState extends State<CustomizedPlanScreen> {
     super.initState();
     final apiService = ApiService(dio);
     repository = TogetherRepository(apiService);
-    print("Questions List: $questions");
+    // print("Questions List: $questions");
   }
 
   void _answerQuestion(int weight) {

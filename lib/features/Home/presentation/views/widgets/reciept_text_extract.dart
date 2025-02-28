@@ -35,8 +35,8 @@ class ReceiptTextExtractorState extends State<ReceiptTextExtractor> {
       extractedText = recognizedText.text;
       parsedItems = _parseReceipt(extractedText);
       // Debug prints:
-      print("Extracted text: $extractedText");
-      print("Parsed items count: ${parsedItems.length}");
+      // print("Extracted text: $extractedText");
+      // print("Parsed items count: ${parsedItems.length}");
     });
   }
 
@@ -76,6 +76,7 @@ class ReceiptTextExtractorState extends State<ReceiptTextExtractor> {
         title: 'Receipt accepted. \$${total.toStringAsFixed(2)}');
 
     Future.delayed(const Duration(seconds: 2), () {
+      // ignore: use_build_context_synchronously
       Navigator.of(context).pop();
     });
   }
