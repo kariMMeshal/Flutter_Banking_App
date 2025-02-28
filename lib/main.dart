@@ -46,7 +46,7 @@ class BankingApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         theme: ThemeData.light().copyWith(
           scaffoldBackgroundColor: klightBackground,
-          textTheme: GoogleFonts.robotoTextTheme((ThemeData.light().textTheme)),
+          textTheme: GoogleFonts.poppinsTextTheme((ThemeData.light().textTheme)),
         ),
       ),
     );

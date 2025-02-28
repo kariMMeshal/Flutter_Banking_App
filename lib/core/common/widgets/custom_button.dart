@@ -11,6 +11,7 @@ class CustomButton extends StatelessWidget {
     this.width,
     this.backgroundColor,
     this.textColor,
+    this.contentPadding,
   });
   final void Function() onPressed;
   final String title;
@@ -18,15 +19,17 @@ class CustomButton extends StatelessWidget {
   final double? width;
   final Color? backgroundColor;
   final Color? textColor;
+  final EdgeInsets? contentPadding;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () => onPressed(),
       child: Container(
+        padding: contentPadding,
         alignment: Alignment.center,
         height: height ?? 60,
-        width: width ?? 100,
+        width: width ?? MediaQuery.of(context).size.width * 0.9,
         decoration: BoxDecoration(
           color: backgroundColor ?? kPurple,
           borderRadius: BorderRadius.circular(20),
@@ -34,7 +37,7 @@ class CustomButton extends StatelessWidget {
         ),
         child: Text(
           title,
-          style: Styles.ktextStyle20.copyWith(color: textColor ?? Colors.white),
+          style: Styles.ktextStyle18.copyWith(color: textColor ?? Colors.white),
         ),
       ),
     );

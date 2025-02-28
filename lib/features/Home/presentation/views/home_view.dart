@@ -4,6 +4,7 @@ import 'package:banking_app2/features/Home/presentation/views/widgets/home_navba
 import 'package:banking_app2/features/Home/presentation/views/widgets/home_view_body.dart';
 import 'package:banking_app2/features/CreditCards/presentation/views/widgets/credit_cards_view_body.dart';
 import 'package:banking_app2/features/Profile/presentation/views/profile_view.dart';
+import 'package:banking_app2/features/plan/ui/select_plan_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -39,7 +40,7 @@ class HomeView extends StatelessWidget {
     final List<Widget> screens = [
       const HomeViewBody(),
       const CreditCardsViewBody(),
-      const Center(child: Text('Settings Screen')),
+      const SelectPlanScreen(),
       const ProfileView(),
     ];
 

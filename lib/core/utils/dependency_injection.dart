@@ -1,3 +1,5 @@
+import 'package:banking_app2/core/networking/api_service.dart';
+import 'package:banking_app2/core/networking/dio_factory.dart';
 import 'package:banking_app2/features/Auth/data/repos/auth_repo.dart';
 import 'package:banking_app2/features/Auth/data/repos/auth_repo_impl.dart';
 import 'package:banking_app2/features/Auth/presentation/manager/Auth_Bloc/auth_bloc.dart';
@@ -5,6 +7,7 @@ import 'package:banking_app2/features/CreditCards/data/repos/credit_card_repo.da
 import 'package:banking_app2/features/CreditCards/data/repos/credit_card_repo_impl.dart';
 import 'package:banking_app2/features/CreditCards/presentation/manager/CreditCards-bloc/creditcards_bloc.dart';
 import 'package:banking_app2/features/Home/presentation/manager/Wallet_Cubit/wallet_cubit.dart';
+import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get_it/get_it.dart';
 
@@ -13,6 +16,9 @@ import 'package:get_it/get_it.dart';
 final GetIt locator = GetIt.instance;
 
 Future<void> setupLocator() async {
+  Dio dio = DioFactory.getDio();
+  locator.registerLazySingleton<ApiService>(() => ApiService(dio));
+
   // Register FirebaseAuth as a lazy singleton
   locator.registerLazySingleton<FirebaseAuth>(() => FirebaseAuth.instance);
 

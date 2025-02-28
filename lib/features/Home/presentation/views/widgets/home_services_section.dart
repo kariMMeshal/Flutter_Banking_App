@@ -32,13 +32,13 @@ class HomeServicesSection extends StatelessWidget {
                   ontap: () {
                     GoRouter.of(context).push(ReceiptTextExtractor.route);
                   },
-                  bottomText: 'Add receipt'),
+                  bottomText: 'Import receipt'),
               ServicesIconButton(
                   iconData: Icons.add_box,
                   ontap: () {
                     GoRouter.of(context).push(AddManualPayment.route);
                   },
-                  bottomText: 'Add manual'),
+                  bottomText: 'Add Payment'),
               ServicesIconButton(
                   iconData: FontAwesomeIcons.creditCard,
                   ontap: () {},

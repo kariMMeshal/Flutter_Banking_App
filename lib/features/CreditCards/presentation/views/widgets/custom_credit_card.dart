@@ -121,30 +121,28 @@ class _CustomCreditCardState extends State<CustomCreditCard> {
         ],
       );
 
-Widget _buildCardNumber(String cardNumber) => AnimatedSwitcher(
-  duration: const Duration(milliseconds: 250),
-  transitionBuilder: (widget, animation) {
-    return FadeTransition(
-      opacity: animation,
-      child: ScaleTransition(
-        scale: Tween<double>(begin: 0.95, end: 1.0).animate(animation),
-        child: widget,
-      ),
-    );
-  },
-  child: Text(
-    cardNumber.replaceAllMapped(RegExp(r'.{4}'), (match) => '${match.group(0)} '),
-    key: ValueKey<String>(cardNumber),
-    style: GoogleFonts.robotoMono(
-      color: Colors.white,
-      fontSize: 20,
-      letterSpacing: 1.5,
-    ),
-  ),
-);
-
-
-
+  Widget _buildCardNumber(String cardNumber) => AnimatedSwitcher(
+        duration: const Duration(milliseconds: 250),
+        transitionBuilder: (widget, animation) {
+          return FadeTransition(
+            opacity: animation,
+            child: ScaleTransition(
+              scale: Tween<double>(begin: 0.95, end: 1.0).animate(animation),
+              child: widget,
+            ),
+          );
+        },
+        child: Text(
+          cardNumber.replaceAllMapped(
+              RegExp(r'.{4}'), (match) => '${match.group(0)} '),
+          key: ValueKey<String>(cardNumber),
+          style: GoogleFonts.robotoMono(
+            color: Colors.white,
+            fontSize: 20,
+            letterSpacing: 1.5,
+          ),
+        ),
+      );
 
   Widget _buildFooter() => Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,

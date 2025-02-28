@@ -10,6 +10,8 @@ import 'package:banking_app2/features/Home/presentation/views/widgets/reciept_te
 import 'package:banking_app2/features/OnBoarding/presentation/views/onboarding_view.dart';
 import 'package:banking_app2/features/Splash/presentation/views/splash_view.dart';
 import 'package:banking_app2/features/CreditCards/presentation/views/credit_cards_view.dart';
+import 'package:banking_app2/features/plan/ui/select_plan_screen.dart';
+import 'package:banking_app2/features/plan/ui/widgets/customized_plan_screen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
@@ -64,6 +66,14 @@ abstract class AppRouter {
       GoRoute(
         path: AddManualPayment.route,
         builder: (context, state) => const AddManualPayment(),
+      ),
+      GoRoute(
+        path: SelectPlanScreen.route,
+        builder: (context, state) => const SelectPlanScreen(),
+      ),
+      GoRoute(
+        path: CustomizedPlanScreen.route,
+        builder: (context, state) => const CustomizedPlanScreen(),
       )
     ],
   );
