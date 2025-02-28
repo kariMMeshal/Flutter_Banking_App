@@ -58,7 +58,7 @@ class SelectPlanScreen extends StatelessWidget {
                             children: [
                               CustomButton(
                                 height: 80,
-                                contentPadding: const EdgeInsets.all(10),
+                                contentPadding: const EdgeInsets.all(15),
                                 backgroundColor: kBlue,
                                 title:
                                     "Take a Surviey to help Ai find the best plan for you 🤖",
@@ -67,14 +67,99 @@ class SelectPlanScreen extends StatelessWidget {
                               ),
                               const SizedBox(height: 20),
                               CustomButton(
-                                contentPadding: const EdgeInsets.all(10),
-                                height: 100,
-                                backgroundColor: kLightBlue,
-                                title:
-                                    "Let Ai anlyse your last transactions and learn your spending hapits to find what satisfies you the most ",
-                                onPressed: () => GoRouter.of(context)
-                                    .go(CustomizedPlanScreen.route),
-                              ),
+                                  contentPadding: const EdgeInsets.all(10),
+                                  height: 100,
+                                  backgroundColor: kPurple,
+                                  title: "PREMIUM",
+                                  onPressed: () {
+                                    showModalBottomSheet(
+                                      context: context,
+                                      isScrollControlled: true,
+                                      backgroundColor: Colors.transparent,
+                                      builder: (context) {
+                                        return DraggableScrollableSheet(
+                                          initialChildSize: 0.4,
+                                          minChildSize: 0.3,
+                                          maxChildSize: 0.6,
+                                          expand: false,
+                                          builder: (context, scrollController) {
+                                            return Container(
+                                              decoration: const BoxDecoration(
+                                                color: Colors.white,
+                                                borderRadius:
+                                                    BorderRadius.vertical(
+                                                        top: Radius.circular(
+                                                            20)),
+                                                boxShadow: [
+                                                  BoxShadow(
+                                                    color: Colors.black26,
+                                                    blurRadius: 10,
+                                                    spreadRadius: 2,
+                                                  )
+                                                ],
+                                              ),
+                                              padding: const EdgeInsets.all(16),
+                                              child: Column(
+                                                mainAxisSize: MainAxisSize.min,
+                                                children: [
+                                                  const Text(
+                                                    "Subscription Plan to Let Ai anlyse your last transactions and learn your spending hapits to find what satisfies you the most",
+                                                    style: Styles.ktextStyle20,
+                                                  ),
+                                                  const SizedBox(height: 10),
+                                                  const Text(
+                                                    "\$9.99/month",
+                                                    style: TextStyle(
+                                                      fontSize: 22,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      color: kLightBlue,
+                                                    ),
+                                                  ),
+                                                  const SizedBox(height: 20),
+                                                  CustomButton(
+                                                    title: "Subscribe Now ",
+                                                    width:
+                                                        MediaQuery.of(context)
+                                                                .size
+                                                                .width *
+                                                            0.8,
+                                                    backgroundColor: kBlue,
+                                                    onPressed: () {
+                                                      showDialog(
+                                                        context: context,
+                                                        builder: (context) =>
+                                                            AlertDialog(
+                                                          title: const Text(
+                                                              "Stay Tuned!",
+                                                              style: Styles
+                                                                  .ktextStyle20),
+                                                          content: const Text(
+                                                            "This feature will be available soon. 🚀",
+                                                            style: Styles
+                                                                .ktextStyle16,
+                                                          ),
+                                                          actions: [
+                                                            TextButton(
+                                                              onPressed: () =>
+                                                                  Navigator.pop(
+                                                                      context),
+                                                              child: const Text(
+                                                                  "OK"),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      );
+                                                    },
+                                                  ),
+                                                ],
+                                              ),
+                                            );
+                                          },
+                                        );
+                                      },
+                                    );
+                                  }),
                             ],
                           ),
                         ],
