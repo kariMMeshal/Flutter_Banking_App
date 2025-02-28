@@ -1,8 +1,10 @@
 import 'package:banking_app2/core/utils/constants.dart';
+import 'package:banking_app2/features/Auth/presentation/views/widgets/add_manual_payment.dart';
 import 'package:banking_app2/features/Home/presentation/views/widgets/reciept_text_extract.dart';
 import 'package:banking_app2/features/Home/presentation/views/widgets/services_icon_button.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:go_router/go_router.dart';
 
 class HomeServicesSection extends StatelessWidget {
   const HomeServicesSection({super.key});
@@ -28,17 +30,14 @@ class HomeServicesSection extends StatelessWidget {
               ServicesIconButton(
                   iconData: Icons.receipt_long,
                   ontap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const ReceiptTextExtractor(),
-                      ),
-                    );
+                    GoRouter.of(context).push(ReceiptTextExtractor.route);
                   },
                   bottomText: 'Add receipt'),
               ServicesIconButton(
                   iconData: Icons.add_box,
-                  ontap: () {},
+                  ontap: () {
+                    GoRouter.of(context).push(AddManualPayment.route);
+                  },
                   bottomText: 'Add manual'),
               ServicesIconButton(
                   iconData: FontAwesomeIcons.creditCard,

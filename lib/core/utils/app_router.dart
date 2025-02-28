@@ -3,6 +3,7 @@ import 'package:banking_app2/features/Auth/presentation/manager/Auth_Bloc/auth_b
 import 'package:banking_app2/features/Auth/presentation/views/forget_password_view.dart';
 import 'package:banking_app2/features/Auth/presentation/views/login_view.dart';
 import 'package:banking_app2/features/Auth/presentation/views/register_view.dart';
+import 'package:banking_app2/features/Auth/presentation/views/widgets/add_manual_payment.dart';
 import 'package:banking_app2/features/CreditCards/presentation/views/add_cards_view.dart';
 import 'package:banking_app2/features/Home/presentation/views/home_view.dart';
 import 'package:banking_app2/features/Home/presentation/views/widgets/reciept_text_extract.dart';
@@ -60,6 +61,10 @@ abstract class AppRouter {
         path: ReceiptTextExtractor.route,
         builder: (context, state) => const ReceiptTextExtractor(),
       ),
+      GoRoute(
+        path: AddManualPayment.route,
+        builder: (context, state) => const AddManualPayment(),
+      )
     ],
   );
 }

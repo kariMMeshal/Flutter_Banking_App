@@ -45,68 +45,70 @@ class LoginViewBody extends StatelessWidget {
       builder: (context, state) {
         return ModalProgressHUD(
           inAsyncCall: state is LoginLoading,
-          child: Column(
-            children: [
-              const LoginViewHeading(),
-              Container(
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(25),
-                    border: Border.all(color: Colors.grey, width: .4)),
-                margin: const EdgeInsets.symmetric(horizontal: 30),
-                padding: const EdgeInsets.all(20),
-                child: Form(
-                  key: formKey,
-                  child: Column(
-                    spacing: 8.5,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const Text('Email', style: Styles.ktextStyle16),
-                      CustomTextfield(
-                          hint: 'user@email.com',
-                          myController: emailController),
-                      const Text('Password', style: Styles.ktextStyle16),
-                      CustomTextfield(
-                        hint: 'Password',
-                        myController: passwordController,
-                        isHidden: true,
-                      ),
-                      const SizedBox(height: 10),
-                      InkWell(
-                        onTap: () =>
-                            GoRouter.of(context).go(ForgetPasswordView.route),
-                        child: Text('Forgort Password ? ',
-                            style:
-                                Styles.ktextStyle14.copyWith(color: kPurple)),
-                      ),
-                    ],
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                const LoginViewHeading(),
+                Container(
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(25),
+                      border: Border.all(color: Colors.grey, width: .4)),
+                  margin: const EdgeInsets.symmetric(horizontal: 30),
+                  padding: const EdgeInsets.all(20),
+                  child: Form(
+                    key: formKey,
+                    child: Column(
+                      spacing: 8.5,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text('Email', style: Styles.ktextStyle16),
+                        CustomTextfield(
+                            hint: 'user@email.com',
+                            myController: emailController),
+                        const Text('Password', style: Styles.ktextStyle16),
+                        CustomTextfield(
+                          hint: 'Password',
+                          myController: passwordController,
+                          isHidden: true,
+                        ),
+                        const SizedBox(height: 10),
+                        InkWell(
+                          onTap: () =>
+                              GoRouter.of(context).go(ForgetPasswordView.route),
+                          child: Text('Forgort Password ? ',
+                              style:
+                                  Styles.ktextStyle14.copyWith(color: kPurple)),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
-              ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  InkWell(
-                    onTap: () => GoRouter.of(context).go(RegisterView.route),
-                    child: Text('Dont have an account ? ',
-                        style: Styles.ktextStyle14.copyWith(color: kPurple)),
-                  ),
-                  const SizedBox(height: 30),
-                  CustomButton(
-                    onPressed: () {
-                      if (formKey.currentState!.validate()) {
-                        BlocProvider.of<AuthBloc>(context).add(LoginEvent(
-                            email: emailController.text.trim().toLowerCase(),
-                            password: passwordController.text));
-                      }
-                    },
-                    title: 'Login',
-                    backgroundColor: kPurple,
-                    width: MediaQuery.of(context).size.width * .8,
-                  ),
-                ],
-              ),
-            ],
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    InkWell(
+                      onTap: () => GoRouter.of(context).go(RegisterView.route),
+                      child: Text('Dont have an account ? ',
+                          style: Styles.ktextStyle14.copyWith(color: kPurple)),
+                    ),
+                    const SizedBox(height: 30),
+                    CustomButton(
+                      onPressed: () {
+                        if (formKey.currentState!.validate()) {
+                          BlocProvider.of<AuthBloc>(context).add(LoginEvent(
+                              email: emailController.text.trim().toLowerCase(),
+                              password: passwordController.text));
+                        }
+                      },
+                      title: 'Login',
+                      backgroundColor: kPurple,
+                      width: MediaQuery.of(context).size.width * .8,
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
         );
       },
