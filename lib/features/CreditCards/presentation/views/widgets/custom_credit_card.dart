@@ -1,3 +1,4 @@
+import 'package:banking_app2/core/Helpers/local_auth_helper.dart';
 import 'package:banking_app2/core/common/widgets/alert_dialog.dart';
 import 'package:banking_app2/features/CreditCards/data/credit_card_designs.dart';
 import 'package:banking_app2/features/CreditCards/data/credit_cards_types.dart';
@@ -58,10 +59,12 @@ class _CustomCreditCardState extends State<CustomCreditCard> {
             state.encryptedData.isNotEmpty) {
           cardNumber = state.encryptedData['encryptedFirst12']!;
         }
-
+        final LocalAuthHelper authHelper = LocalAuthHelper();
         return GestureDetector(
-          onTap: () {
-            if (!isEncryptedVisible) {
+          onTap: () async {
+            bool isAuthenticated = await authHelper.authenticateUser();
+            if (!isEncryptedVisible && isAuthenticated) {
+              // ignore: use_build_context_synchronously
               context.read<CreditcardsBloc>().add(
                     LoadEncryptedCardDataEvent(cardId: widget.cardId),
                   );

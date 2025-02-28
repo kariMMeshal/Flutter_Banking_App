@@ -1,8 +1,10 @@
 import 'package:banking_app2/core/utils/constants.dart';
 import 'package:banking_app2/features/Auth/presentation/views/widgets/add_manual_payment.dart';
+import 'package:banking_app2/features/Home/presentation/manager/BottomNav_Cubit/bottom_nav_cubit.dart';
 import 'package:banking_app2/features/Home/presentation/views/widgets/reciept_text_extract.dart';
 import 'package:banking_app2/features/Home/presentation/views/widgets/services_icon_button.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
 
@@ -41,11 +43,15 @@ class HomeServicesSection extends StatelessWidget {
                   bottomText: 'Add Payment'),
               ServicesIconButton(
                   iconData: FontAwesomeIcons.creditCard,
-                  ontap: () {},
+                  ontap: () {
+                    BlocProvider.of<BottomNavCubit>(context).setIndex(2);
+                  },
                   bottomText: 'Credit Cards'),
               ServicesIconButton(
                   iconData: FontAwesomeIcons.chartColumn,
-                  ontap: () {},
+                  ontap: () {
+                    BlocProvider.of<BottomNavCubit>(context).setIndex(3);
+                  },
                   bottomText: 'History'),
             ],
           ),

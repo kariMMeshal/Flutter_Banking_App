@@ -49,7 +49,7 @@ class AddManualPaymentState extends State<AddManualPayment> {
       appBar: AppBar(title: const Text("Add Manual Payment")),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: const EdgeInsets.all(20.0),
           child: Column(
             spacing: 20,
             children: [

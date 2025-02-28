@@ -34,8 +34,8 @@ class HomeNavBar extends StatelessWidget {
         NavItem(
           index: 2,
           selectedIndex: selectedIndex,
-          icon: FontAwesomeIcons.chartPie,
-          label: 'Statistics',
+          icon: FontAwesomeIcons.map,
+          label: 'Plan',
           onItemTapped: onItemTapped,
         ),
         NavItem(

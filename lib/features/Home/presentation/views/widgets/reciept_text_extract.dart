@@ -96,7 +96,7 @@ class ReceiptTextExtractorState extends State<ReceiptTextExtractor> {
             ),
             const SizedBox(height: 20),
             // Debug: Show number of parsed items.
-            Text("Parsed Items: ${parsedItems.length}",
+            Text("Extracted Items: ${parsedItems.length}",
                 style: Styles.ktextStyle18),
             Expanded(
               child: parsedItems.isNotEmpty

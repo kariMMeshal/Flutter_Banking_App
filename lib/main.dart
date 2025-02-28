@@ -12,7 +12,7 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
 
-  await initializeNotifications(); // 🔹 تم استبدال `requestNotificationPermission` بوظيفة أكثر شمولًا
+  await initializeNotifications();
   await setupLocator();
 
   String? userId = FirebaseAuth.instance.currentUser?.uid;
@@ -33,7 +33,7 @@ Future<void> initializeNotifications() async {
         channelName: 'Basic Notifications',
         channelDescription: 'Notification channel for basic alerts',
         defaultColor: kPurple,
-        ledColor: Colors.white,
+        ledColor: kBlue,
         importance: NotificationImportance.High,
         channelShowBadge: true,
       )
